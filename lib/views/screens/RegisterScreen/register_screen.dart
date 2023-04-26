@@ -145,8 +145,9 @@ class RegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             const CustomText(
-                text:
-                    '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits'),
+              text:
+                  '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
+            ),
             const SizedBox(
               height: 100,
             ),

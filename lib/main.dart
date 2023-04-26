@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
-import 'package:salute_medical/bloc/layout_cubit/register_cubit.dart';
-import 'package:salute_medical/bloc/layout_cubit/welcome_cubit.dart';
+import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
+import 'package:salute_medical/bloc/welcome_cubit/welcome_cubit.dart';
 import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
 
 void main() {
