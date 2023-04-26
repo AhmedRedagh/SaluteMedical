@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
+import 'package:salute_medical/views/widgets/register_widget/mail_section_register.dart';
+import 'package:salute_medical/views/widgets/register_widget/password_section_register.dart';
+import 'package:salute_medical/views/widgets/register_widget/phone_section_register_w.dart';
+import 'package:salute_medical/views/widgets/register_widget/verify_section_register.dart';
 
-import '../../custom_widgets/appbar/components/components.dart';
+import '../../widgets/register_widget/pin_code_section_register.dart';
+import '../../widgets/register_widget/sign_in_section_register_w.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
@@ -24,126 +29,52 @@ class RegisterScreen extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.only(top: 45, left: 15, right: 15),
           child: Column(
-            children: [
+            children: const [
               //Number Section
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/images/phone-icon.png',
-                    scale: 4,
-                    fit: BoxFit.scaleDown,
-                  ),
-                  const SizedBox(width: 9),
-                  const CustomText(
-                    text: 'Phone Number',
-                    fontW: FontWeight.w400,
-                    fontSize: 20,
-                  ),
-                ],
-              ),
-              const CustomFormField(
+              PhoneSectionRegisterW(),
+              CustomFormField(
                 hintText: "please enter yor Phone Number",
                 hintTextColor: TColor.grey,
                 inputType: TextInputType.phone,
               ),
-              const SizedBox(
-                height: 10,
+              Sbox(
+                h: 10,
               ),
               //verification Code Section
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/images/lock-icon.png',
-                    scale: 1.4,
-                  ),
-                  const SizedBox(width: 4),
-                  const CustomText(
-                    text: 'Verification Code',
-                    fontW: FontWeight.w400,
-                    fontSize: 20,
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Flexible(
-                    child: PinCodeTextField(
-                      appContext: context,
-                      length: 4,
-                      onChanged: (value) {},
-                      hintCharacter: '*',
-                    ),
-                  ),
-                  const SizedBox(width: 50),
-                  TextButton(
-                      onPressed: () {},
-                      child: const CustomText(
-                        text: 'Get Code',
-                        fontSize: 20,
-                        fontW: FontWeight.bold,
-                        color: TColor.iconGary,
-                      ))
-                ],
-              ),
-              const SizedBox(
-                height: 10,
+              VerifySectionRegisterW(),
+              PinCodeRegisterW(),
+              Sbox(
+                h: 10,
               ),
               //Mail Section
-              Row(
-                children: const [
-                  Icon(
-                    Icons.mail_sharp,
-                    color: TColor.prim,
-                    size: 27,
-                  ),
-                  SizedBox(width: 9),
-                  CustomText(
-                    text: 'Email',
-                    fontW: FontWeight.w400,
-                    fontSize: 20,
-                  ),
-                ],
-              ),
-              const CustomFormField(
+              MailSectionRegisterW(),
+              CustomFormField(
                 hintText: "please enter yor Email",
                 hintTextColor: TColor.grey,
                 inputType: TextInputType.emailAddress,
               ),
-              const SizedBox(
-                height: 10,
+              Sbox(
+                h: 10,
               ),
               //PassWord Section
-              Row(
-                children: [
-                  Image.asset(
-                    'assets/images/password.png',
-                    scale: 4,
-                    fit: BoxFit.scaleDown,
-                  ),
-                  const SizedBox(width: 9),
-                  const CustomText(
-                    text: 'Password',
-                    fontW: FontWeight.w400,
-                    fontSize: 20,
-                  ),
-                ],
-              ),
-              const CustomFormField(
+              PassWordSectionRegisterW(),
+              CustomFormField(
                 hintText: "please enter yor Password",
                 hintTextColor: TColor.grey,
                 security: true,
               ),
-              const SizedBox(height: 10),
-              const CustomText(
+              Sbox(h: 10),
+              CustomText(
                 height: true,
                 maxLine: 2,
                 text:
                     '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
               ),
-              const SizedBox(
-                height: 100,
+              Sbox(
+                h: 100,
               ),
-              const CustomButton(
+              //RegisterButton
+              CustomButton(
                 bgColor: TColor.iconGary,
                 textColor: Colors.grey,
                 text: 'Register',
@@ -153,21 +84,8 @@ class RegisterScreen extends StatelessWidget {
                 radius: 40,
                 borderColor: TColor.iconGary,
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CustomText(text: 'Aleady have an account?'),
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline),
-                      ))
-                ],
-              )
+              Sbox(h: 10),
+              SignInRegisterW()
             ],
           ),
         ),
