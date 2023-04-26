@@ -52,8 +52,11 @@ dependencies:
   shimmer: ^2.0.0
   # flutter rating
   flutter_rating_bar: ^4.0.0
+  # animation_splash_screen :
   animated_splash_screen: ^1.3.0
+  # page_transition:
   page_transition: ^2.0.9
+  # pin_code_field :
   pin_code_fields: ^7.4.0
 
 dev_dependencies:

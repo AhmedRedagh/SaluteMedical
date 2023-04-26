@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-navigateTo(context, route) {
-  Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => route,
-      ));
-}
+class NavigationUsage {
+  static navigateTo(context, route) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => route,
+        ));
+  }
 
-getBack(context) {
-  Navigator.pop(context);
+  static getBack(context) {
+    Navigator.pop(context);
+  }
 }
