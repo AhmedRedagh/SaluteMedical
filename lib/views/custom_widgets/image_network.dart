@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:salute_medical/utils/assets_utils.dart';
 
 import '../../config/theme_colors.dart';
 
@@ -37,7 +35,11 @@ class ImageNetwork extends StatelessWidget {
       height: height,
       width: width,
       imageUrl: url ?? " ",
-      fit: fill ? BoxFit.fill : cover ? BoxFit.cover : BoxFit.contain,
+      fit: fill
+          ? BoxFit.fill
+          : cover
+              ? BoxFit.cover
+              : BoxFit.contain,
       errorWidget: (context, url, error) => errorWidget != null
           ? errorWidget!
           : const Center(

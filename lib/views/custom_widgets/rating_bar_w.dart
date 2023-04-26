@@ -9,9 +9,9 @@ class RatingBarWidget extends StatelessWidget {
   final double rate, iconSize;
   final bool center, rateText;
   final bool ratingClick;
-  Function(dynamic)? onRating;
+  final Function(dynamic)? onRating;
 
-   RatingBarWidget({
+  const RatingBarWidget({
     this.rate = 3.0,
     this.iconSize = 14.5,
     this.center = false,
@@ -29,10 +29,10 @@ class RatingBarWidget extends StatelessWidget {
       children: [
         RatingBar.builder(
           tapOnlyMode: true,
-           ignoreGestures: ratingClick,
+          ignoreGestures: ratingClick,
           initialRating: rate,
           minRating: 1,
-          unratedColor:   const Color(0xffCACACA),
+          unratedColor: const Color(0xffCACACA),
           direction: Axis.horizontal,
           allowHalfRating: true,
           itemCount: 5,

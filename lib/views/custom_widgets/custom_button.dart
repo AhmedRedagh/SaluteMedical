@@ -20,6 +20,7 @@ class CustomButton extends StatelessWidget {
   final FontWeight? fontWeight;
 
   const CustomButton({
+    super.key,
     this.height = 50.0,
     this.width,
     this.onTap,
@@ -42,9 +43,9 @@ class CustomButton extends StatelessWidget {
       width: width?.w ?? 1.sw,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          foregroundColor: outlineButton ? bgColor : textColor,
+          backgroundColor: outlineButton ? textColor : bgColor,
           elevation: 0,
-          primary: outlineButton ? textColor : bgColor,
-          onPrimary: outlineButton ? bgColor : textColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(radius),
             side: BorderSide(
@@ -53,12 +54,13 @@ class CustomButton extends StatelessWidget {
           ),
         ),
         onPressed: onTap,
-        child: child ?? CustomText(
-          text: text,
-          color: outlineButton ? bgColor : textColor,
-          fontSize: fontSize.sp,
-          fontW: fontWeight!,
-        ),
+        child: child ??
+            CustomText(
+              text: text,
+              color: outlineButton ? bgColor : textColor,
+              fontSize: fontSize.sp,
+              fontW: fontWeight!,
+            ),
       ),
     );
   }

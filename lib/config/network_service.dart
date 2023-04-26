@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-
+import 'package:flutter/material.dart';
 
 class NetworkService {
   final dio = Dio();
@@ -10,8 +10,8 @@ class NetworkService {
     Map<String, dynamic>? queryParameters,
     bool isAuth = false,
   }) async {
-    const _token = '';
-    final authHeaders = {'Authorization': "Bearer $_token"};
+    const token = '';
+    final authHeaders = {'Authorization': "Bearer $token"};
     Response? response;
     try {
       dio.options.baseUrl = "";
@@ -38,9 +38,9 @@ class NetworkService {
     bool isAuth = false,
     encoding,
   }) async {
-    print('body => $body');
-    const _token = '';
-    final authHeaders = {'Authorization': "Bearer $_token"};
+    debugPrint('body => $body');
+    const token = '';
+    final authHeaders = {'Authorization': "Bearer $token"};
 
     // headers = {'Accept-Language': 'en'};
 
@@ -72,9 +72,9 @@ class NetworkService {
     bool isAuth = false,
     encoding,
   }) async {
-    print('body => $body');
-    const _token = '';
-    final authHeaders = {'Authorization': "Bearer $_token"};
+    debugPrint('body => $body');
+    const token = '';
+    final authHeaders = {'Authorization': "Bearer $token"};
 
     // headers = {'Accept-Language': 'en'};
 
@@ -106,9 +106,9 @@ class NetworkService {
     bool isAuth = false,
     encoding,
   }) async {
-    print('body => $body');
-    const _token = '';
-    final authHeaders = {'Authorization': "Bearer $_token"};
+    debugPrint('body => $body');
+    const token = '';
+    final authHeaders = {'Authorization': "Bearer $token"};
     // headers = {'Accept-Language': 'en'};
     Response? response;
     dio.options.baseUrl = "";

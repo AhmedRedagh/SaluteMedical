@@ -1,24 +1,23 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 
 class CustomFormField extends StatelessWidget {
-  String? hintText;
-  bool security;
-  TextInputType inputType;
-  String? validation;
-  Function(dynamic)? saved;
-  int maxLine;
-  Widget? prefix;
-  Widget? suffix;
-  Function(String)? onChanged;
-  int? number;
-  String? labelText;
-  Color? hintTextColor;
-  Color? labelTextColor;
+  final String? hintText;
+  final bool security;
+  final TextInputType inputType;
+  final String? validation;
+  final Function(dynamic)? saved;
+  final int maxLine;
+  final Widget? prefix;
+  final Widget? suffix;
+  final Function(String)? onChanged;
+  final int? number;
+  final String? labelText;
+  final Color? hintTextColor;
+  final Color? labelTextColor;
 
-  CustomFormField({
+  const CustomFormField({
     Key? key,
     this.hintText,
     this.inputType = TextInputType.text,
@@ -56,8 +55,8 @@ class CustomFormField extends StatelessWidget {
         labelText: labelText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         hintStyle: TextStyle(
-          fontWeight: FontWeight.w700,
-          fontSize: 14.0.sp,
+          fontWeight: FontWeight.w300,
+          fontSize: 16.0.sp,
           color: hintTextColor,
         ),
         labelStyle: TextStyle(
@@ -65,10 +64,10 @@ class CustomFormField extends StatelessWidget {
           fontSize: 16.0.sp,
           color: labelTextColor,
         ),
-        enabledBorder:  const  UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: TColor.underInput),
         ),
-        focusedBorder: const  UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(
             color: TColor.underInput,
           ),

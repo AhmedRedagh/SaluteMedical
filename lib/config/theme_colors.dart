@@ -10,6 +10,7 @@ class TColor {
 //   }
 
   static const Color primary = Color(0xff4A5CD0);
+  static const Color prim = Color(0xFF598AE9);
   static const Color primaryOpacity = Color(0xffFFDFEB);
   static const Color primaryOpacity2 = Color(0xffFFEEF4);
   // static const primary2 = Color(0xff264ABF);
@@ -73,10 +74,10 @@ class TColor {
   static const bgFDThree = Color(0xffF3F3F3);
   static const circleProfile = Color(0xffFCDDEC);
   static const orDivider = Color(0xffC4C4C4);
-  static const socialLoginColor =  Color(0xffEEEEF0);
-  static const subCategoryDes =  Color(0xff737373);
-  static const unSelectTab =  Color(0xff959592);
-  static const iconCircle =  Color(0xff32BEA6);
+  static const socialLoginColor = Color(0xffEEEEF0);
+  static const subCategoryDes = Color(0xff737373);
+  static const unSelectTab = Color(0xff959592);
+  static const iconCircle = Color(0xff32BEA6);
   static const shimmerLoading = Color(0xffcccccc);
   static const unselectBottomNavigation = Color(0xffC8C8D3);
 }

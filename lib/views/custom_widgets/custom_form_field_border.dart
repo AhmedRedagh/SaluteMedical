@@ -3,26 +3,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 
 class CustomFormFieldWithBorder extends StatelessWidget {
-  String? hintText;
-  bool security;
-  TextInputType inputType;
-  String? validation;
-  Function(dynamic)? saved;
-  int maxLine;
-  Widget? prefix;
-  Widget? suffix;
-  double? radiusNumber;
-  Function(String)? onChanged;
-  int? number;
-  double? paddingLeft;
-  double? paddingRight;
-  double? formFieldWidth;
-  double? contentPaddingVertical;
-  double? contentPaddingHorizontal;
-  Color? fillColor;
-  TextEditingController? controller;
+  final String? hintText;
+  final bool security;
+  final TextInputType inputType;
+  final String? validation;
+  final Function(dynamic)? saved;
+  final int maxLine;
+  final Widget? prefix;
+  final Widget? suffix;
+  final double? radiusNumber;
+  final Function(String)? onChanged;
+  final int? number;
+  final double? paddingLeft;
+  final double? paddingRight;
+  final double? formFieldWidth;
+  final double? contentPaddingVertical;
+  final double? contentPaddingHorizontal;
+  final Color? fillColor;
+  final TextEditingController? controller;
 
-  CustomFormFieldWithBorder({
+  const CustomFormFieldWithBorder({
+    super.key,
     this.hintText,
     this.inputType = TextInputType.text,
     this.saved,
@@ -40,6 +41,7 @@ class CustomFormFieldWithBorder extends StatelessWidget {
     this.contentPaddingVertical = 12,
     this.contentPaddingHorizontal = 10,
     this.controller,
+    this.number,
   });
   @override
   Widget build(BuildContext context) {
