@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
-import 'package:salute_medical/views/custom_widgets/appbar/components/components.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/screens/login_screen/login_screen.dart';

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:salute_medical/views/custom_widgets/appbar/components/components.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 AppBar appBarW({
   BuildContext? context,
   String? name,
 }) {
-  return  AppBar(
+  return AppBar(
     backgroundColor: Colors.white,
     leading: IconButton(
       onPressed: () => NavigationUsage.getBack(context),

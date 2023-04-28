@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:salute_medical/views/custom_widgets/appbar/components/components.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/screens/RegisterScreen/register_screen.dart';
