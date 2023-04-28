@@ -64,7 +64,7 @@ class VerificationLoginScreen extends StatelessWidget {
               ),
               const CustomFormField(
                 prefix: Icon(Icons.phone_android),
-                hintText: "Phone Numper ",
+                hintText: "Phone Number ",
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),

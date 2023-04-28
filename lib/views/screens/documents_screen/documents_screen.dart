@@ -63,7 +63,7 @@ class DocumentsScreen extends StatelessWidget {
               child: CustomButton(
                 bgColor: TColor.prim,
                 textColor: Colors.white,
-                text: 'Register',
+                text: 'Send',
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
                 width: 300,
