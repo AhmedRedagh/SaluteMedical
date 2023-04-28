@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 import '../../../config/theme_colors.dart';
 import '../../custom_widgets/custom_button.dart';
@@ -24,7 +23,7 @@ class PinCodeLoginW extends StatelessWidget {
         CustomButton(
           bgColor: TColor.grey2,
           textColor: TColor.borderContainer,
-          onTap: () =>{},
+          onTap: () => {},
           radius: 50,
           borderColor: TColor.grey2,
           text: 'Re-get Code',
