@@ -4,6 +4,7 @@ import 'package:salute_medical/views/custom_widgets/appbar/components/components
 
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/screens/RegisterScreen/register_screen.dart';
+import 'package:salute_medical/views/screens/login_screen/login_screen.dart';
 
 import '../../../config/theme_colors.dart';
 
@@ -42,7 +43,8 @@ class WelcomeScreen extends StatelessWidget {
           CustomButton(
             bgColor: Colors.white,
             textColor: TColor.prim,
-            onTap: () => {},
+            onTap: () =>
+                NavigationUsage.navigateTo(context, const LoginScreen()),
             radius: 50,
             text: 'Login',
             fontSize: 17,
