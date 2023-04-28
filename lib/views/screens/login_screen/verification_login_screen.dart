@@ -4,11 +4,11 @@ import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/widgets/login_widget/pin_code_login_screen.dart';
-import 'package:salute_medical/views/widgets/register_widget/password_section_register.dart';
 
 import '../../widgets/login_widget/verify_section_login.dart';
-class VerificationLoginScreen  extends StatelessWidget {
-  const VerificationLoginScreen  ({Key? key}) : super(key: key);
+
+class VerificationLoginScreen extends StatelessWidget {
+  const VerificationLoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,6 @@ class VerificationLoginScreen  extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
               // logo
               Container(
@@ -29,7 +28,9 @@ class VerificationLoginScreen  extends StatelessWidget {
                         image: AssetImage('assets/images/logo.png'),
                         fit: BoxFit.contain)),
               ),
-              const Sbox(h: 15,),
+              const Sbox(
+                h: 15,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Row(
@@ -41,11 +42,13 @@ class VerificationLoginScreen  extends StatelessWidget {
                           "Phone No.",
                           style: TextStyle(
                             color: TColor.prim,
-                            fontSize: 20 ,
-                            fontWeight:  FontWeight.bold,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Sbox(h: 15,),
+                        const Sbox(
+                          h: 15,
+                        ),
                         Container(
                           width: 60,
                           height: 2,
@@ -56,43 +59,51 @@ class VerificationLoginScreen  extends StatelessWidget {
                   ],
                 ),
               ),
-              const Sbox(h: 15,),
-              CustomFormField(
+              const Sbox(
+                h: 15,
+              ),
+              const CustomFormField(
                 prefix: Icon(Icons.phone_android),
                 hintText: "Phone Numper ",
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),
-              const Sbox(h: 15,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 13),
+              const Sbox(
+                h: 15,
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 13),
                 child: VerifySectionLoginW(),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10),
                 child: PinCodeLoginW(),
               ),
-              const Sbox(h: 15,),
+              const Sbox(
+                h: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                      onPressed: (){},
-                      child: Text(
+                      onPressed: () {},
+                      child: const Text(
                         'Forgot your passworld?',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold ,
-                          fontSize: 15 ,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
                           color: TColor.title,
                         ),
                       )),
                 ],
               ),
-              const Sbox(h: 20,),
+              const Sbox(
+                h: 20,
+              ),
               CustomButton(
                 bgColor: TColor.grey2,
                 textColor: TColor.borderContainer,
-                onTap: () =>{},
+                onTap: () => {},
                 radius: 50,
                 borderColor: TColor.grey2,
                 text: 'Login',
@@ -102,12 +113,10 @@ class VerificationLoginScreen  extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    'Have no account yet?'
-                  ),
+                  const Text('Have no account yet?'),
                   TextButton(
-                      onPressed: (){},
-                      child: Text('Register'),
+                    onPressed: () {},
+                    child: const Text('Register'),
                   )
                 ],
               ),

@@ -5,8 +5,9 @@ import 'package:salute_medical/views/custom_widgets/appbar/components/components
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/screens/login_screen/verification_login_screen.dart';
-class LoginScreen  extends StatelessWidget {
-  const LoginScreen ({Key? key}) : super(key: key);
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,6 @@ class LoginScreen  extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-
             children: [
               // logo
               Container(
@@ -27,7 +27,9 @@ class LoginScreen  extends StatelessWidget {
                         image: AssetImage('assets/images/logo.png'),
                         fit: BoxFit.contain)),
               ),
-              const Sbox(h: 15,),
+              const Sbox(
+                h: 15,
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Row(
@@ -39,11 +41,13 @@ class LoginScreen  extends StatelessWidget {
                           "Phone No.",
                           style: TextStyle(
                             color: TColor.prim,
-                            fontSize: 20 ,
-                            fontWeight:  FontWeight.bold,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Sbox(h: 15,),
+                        const Sbox(
+                          h: 15,
+                        ),
                         Container(
                           width: 60,
                           height: 2,
@@ -54,15 +58,19 @@ class LoginScreen  extends StatelessWidget {
                   ],
                 ),
               ),
-              const Sbox(h: 15,),
-              CustomFormField(
+              const Sbox(
+                h: 15,
+              ),
+              const CustomFormField(
                 prefix: Icon(Icons.phone_android),
                 hintText: "Phone Numper ",
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),
-              const Sbox(h: 20,),
-              CustomFormField(
+              const Sbox(
+                h: 20,
+              ),
+              const CustomFormField(
                 prefix: Icon(Icons.lock),
                 suffix: Icon(Icons.remove_red_eye),
                 hintText: "Passworld ",
@@ -70,28 +78,33 @@ class LoginScreen  extends StatelessWidget {
                 security: true,
                 hintTextColor: TColor.grey,
               ),
-              const Sbox(h: 20,),
+              const Sbox(
+                h: 20,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   TextButton(
-                      onPressed: (){},
-                      child: Text(
-                        'Forgot your passworld?',
+                      onPressed: () {},
+                      child: const Text(
+                        'Forgot your password?',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold ,
-                          fontSize: 15 ,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
                           color: TColor.title,
                         ),
                       )),
                 ],
               ),
-              const Sbox(h: 70,),
+              const Sbox(
+                h: 70,
+              ),
               CustomButton(
                 bgColor: TColor.grey2,
                 textColor: TColor.borderContainer,
-                onTap: () =>{
-                  NavigationUsage.navigateTo(context, const VerificationLoginScreen() )
+                onTap: () => {
+                  NavigationUsage.navigateTo(
+                      context, const VerificationLoginScreen())
                 },
                 radius: 50,
                 borderColor: TColor.grey2,
