@@ -6,6 +6,7 @@ import 'package:salute_medical/bloc/documents_cubit/documents_cubit.dart';
 import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/views/custom_widgets/components/stepper.dart';
+import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(
@@ -43,7 +44,7 @@ class MyApp extends StatelessWidget {
                     systemOverlayStyle: SystemUiOverlayStyle(
                         statusBarColor: Colors.white,
                         statusBarIconBrightness: Brightness.dark))),
-            home: const NumberSteppers(),
+            home: const SplashScreen(),
           );
         },
       ),

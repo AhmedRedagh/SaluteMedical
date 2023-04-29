@@ -8,6 +8,7 @@ import 'package:salute_medical/views/screens/verify_screen/verification_login_sc
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
+import 'package:salute_medical/views/widgets/register_widget/sign_in_section_register_w.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -49,23 +50,22 @@ class LoginScreen extends StatelessWidget {
               const Sbox(
                 h: 20,
               ),
+              CustomButton(
+                bgColor: TColor.iconGary,
+                textColor: Colors.grey,
+                text: 'login',
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                width: 300,
+                radius: 40,
+                borderColor: TColor.iconGary,
+              ),
+              Sbox(h: 10),
               const ForgotPassworldLogin(),
               const Sbox(
                 h: 70,
               ),
-              CustomButton(
-                bgColor: TColor.grey2,
-                textColor: TColor.borderContainer,
-                onTap: () => {
-                  NavigationUsage.navigateTo(
-                      context, const VerificationLoginScreen())
-                },
-                radius: 50,
-                borderColor: TColor.grey2,
-                text: 'Login',
-                fontSize: 17,
-                width: 310,
-              ),
+              SignInRegisterW(name: "Register",)
             ],
           ),
         ),

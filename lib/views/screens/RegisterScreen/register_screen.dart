@@ -29,52 +29,53 @@ class RegisterScreen extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.only(top: 45, left: 15, right: 15),
           child: Column(
-            children: const [
+            children:  [
               //Number Section
-              PhoneSectionRegisterW(),
-              CustomFormField(
+              const PhoneSectionRegisterW(),
+              const CustomFormField(
                 hintText: "please enter yor Phone Number",
                 hintTextColor: TColor.grey,
                 inputType: TextInputType.phone,
               ),
-              Sbox(
+              const Sbox(
                 h: 10,
               ),
               //verification Code Section
-              VerifySectionRegisterW(),
-              PinCodeRegisterW(),
-              Sbox(
+              const VerifySectionRegisterW(),
+              const PinCodeRegisterW(),
+              const  Sbox(
                 h: 10,
               ),
               //Mail Section
-              MailSectionRegisterW(),
-              CustomFormField(
+              const MailSectionRegisterW(),
+              const CustomFormField(
                 hintText: "please enter yor Email",
                 hintTextColor: TColor.grey,
                 inputType: TextInputType.emailAddress,
               ),
-              Sbox(
+              const Sbox(
                 h: 10,
               ),
               //PassWord Section
-              PassWordSectionRegisterW(),
-              CustomFormField(
+              const  PassWordSectionRegisterW(),
+              const CustomFormField(
                 hintText: "please enter yor Password",
                 hintTextColor: TColor.grey,
                 security: true,
               ),
-              Sbox(h: 10),
-              CustomText(
+              const Sbox(h: 10),
+              const CustomText(
                 height: true,
                 maxLine: 2,
                 text:
                     '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
               ),
-              Sbox(
+              const Sbox(
                 h: 100,
               ),
               //RegisterButton
               CustomButton(
+                onTap: (){},
                 bgColor: TColor.iconGary,
                 textColor: Colors.grey,
                 text: 'Register',
@@ -84,8 +85,8 @@ class RegisterScreen extends StatelessWidget {
                 radius: 40,
                 borderColor: TColor.iconGary,
               ),
-              Sbox(h: 10),
-              SignInRegisterW()
+              const Sbox(h: 10),
+              const SignInRegisterW(name: "Login",)
             ],
           ),
         ),

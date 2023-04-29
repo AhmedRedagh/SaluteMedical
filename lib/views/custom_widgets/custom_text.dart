@@ -59,7 +59,7 @@ class CustomText extends StatelessWidget {
                   )
                 ]
               : [],
-          decoration: underline ? TextDecoration.lineThrough : null,
+          decoration: underline ? TextDecoration.underline : null,
         ),
         overflow: overflow,
       ),

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 class SignInRegisterW extends StatelessWidget {
-  const SignInRegisterW({super.key});
+  final String? name;
+  const SignInRegisterW({super.key, this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +12,13 @@ class SignInRegisterW extends StatelessWidget {
       children: [
         const CustomText(text: 'Aleady have an account?'),
         TextButton(
-            onPressed: () {},
-            child: const Text(
-              'Login',
-              style: TextStyle(
-                  color: Colors.blue, decoration: TextDecoration.underline),
-            ))
+          onPressed: () {},
+          child: CustomText(
+            text: name,
+            color: Colors.blue,
+            underline: true,
+          ),
+        )
       ],
     );
   }
