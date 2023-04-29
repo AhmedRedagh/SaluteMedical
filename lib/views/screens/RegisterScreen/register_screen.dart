@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/screens/verify_screen/verification_login_screen.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 import 'package:salute_medical/views/widgets/register_widget/mail_section_register.dart';
 import 'package:salute_medical/views/widgets/register_widget/password_section_register.dart';
@@ -71,12 +73,14 @@ class RegisterScreen extends StatelessWidget {
                     '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
               ),
               const Sbox(
-                h: 100,
+                h: 50,
               ),
               //RegisterButton
               CustomButton(
-                onTap: (){},
-                bgColor: TColor.iconGary,
+                onTap: (){
+                  NavigationUsage.navigateTo(context, const VerificationLoginScreen());
+                },
+                bgColor: TColor.grey2,
                 textColor: Colors.grey,
                 text: 'Register',
                 fontWeight: FontWeight.bold,

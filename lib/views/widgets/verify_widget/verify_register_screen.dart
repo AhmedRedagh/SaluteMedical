@@ -11,9 +11,14 @@ class RegisterVerifyScreen extends StatelessWidget {
       children: [
         const CustomText(text: 'Have no account yet?'),
         TextButton(
-          onPressed: () {},
-          child: const CustomText(text: 'Register'),
-        )
+              onPressed: (){
+              },
+              child:CustomText(text:
+              'Register',
+                color: Colors.blue,
+                underline: true,
+              )
+          ),
       ],
     );
   }
