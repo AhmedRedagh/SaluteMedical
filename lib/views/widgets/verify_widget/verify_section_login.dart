@@ -6,19 +6,22 @@ class VerifySectionLoginW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          'assets/images/lock-icon.png',
-          scale: 1.6,
-        ),
-        const SizedBox(width: 4),
-        const CustomText(
-          text: 'Verification Code',
-          fontW: FontWeight.w400,
-          fontSize: 20,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 13),
+      child: Row(
+        children: [
+          Image.asset(
+            'assets/images/lock-icon.png',
+            scale: 1.6,
+          ),
+          const SizedBox(width: 4),
+          const CustomText(
+            text: 'Verification Code',
+            fontW: FontWeight.w400,
+            fontSize: 20,
+          ),
+        ],
+      ),
     );
   }
 }
