@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
-import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
-import 'package:salute_medical/views/screens/verify_screen/verification_login_screen.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
@@ -20,14 +18,14 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               // logo
-              const LogoSectionLogin(),
-              const Sbox(
+              LogoSectionLogin(),
+              Sbox(
                 h: 15,
               ),
-              const PhoneNoLogin(),
-              const Sbox(
+              PhoneNoLogin(),
+              Sbox(
                 h: 15,
               ),
               CustomFormField(
@@ -36,7 +34,7 @@ class LoginScreen extends StatelessWidget {
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),
-              const Sbox(
+              Sbox(
                 h: 20,
               ),
               CustomFormField(
@@ -47,7 +45,7 @@ class LoginScreen extends StatelessWidget {
                 security: true,
                 hintTextColor: TColor.grey,
               ),
-              const Sbox(
+              Sbox(
                 h: 20,
               ),
               CustomButton(
@@ -61,11 +59,13 @@ class LoginScreen extends StatelessWidget {
                 borderColor: TColor.iconGary,
               ),
               Sbox(h: 10),
-              const ForgotPassworldLogin(),
-              const Sbox(
+              ForgotPassworldLogin(),
+              Sbox(
                 h: 70,
               ),
-              SignInRegisterW(name: "Register",)
+              SignInRegisterW(
+                name: "Register",
+              )
             ],
           ),
         ),

@@ -10,12 +10,12 @@ class ForgotPassworldLogin extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-            onPressed: (){},
-            child: Text(
+            onPressed: () {},
+            child: const Text(
               'Forgot your passworld?',
               style: TextStyle(
-                fontWeight: FontWeight.bold ,
-                fontSize: 15 ,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
                 color: TColor.title,
               ),
             )),

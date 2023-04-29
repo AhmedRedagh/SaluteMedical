@@ -30,7 +30,7 @@ class VerificationLoginScreen extends StatelessWidget {
               const Sbox(
                 h: 15,
               ),
-              CustomFormField(
+              const CustomFormField(
                 prefix: Icon(Icons.phone_android),
                 hintText: "Phone Numper ",
                 inputType: TextInputType.number,
@@ -40,11 +40,11 @@ class VerificationLoginScreen extends StatelessWidget {
                 h: 15,
               ),
               const VerifySectionLoginW(),
-              PinCodeVerify(),
+              const PinCodeVerify(),
               const Sbox(
                 h: 15,
               ),
-              ForgotPassworldLogin(),
+              const ForgotPassworldLogin(),
               const Sbox(
                 h: 20,
               ),
@@ -58,7 +58,7 @@ class VerificationLoginScreen extends StatelessWidget {
                 fontSize: 17,
                 width: 310,
               ),
-              RegisterVerifyScreen(),
+              const RegisterVerifyScreen(),
             ],
           ),
         ),
