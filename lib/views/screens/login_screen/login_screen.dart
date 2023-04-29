@@ -6,7 +6,7 @@ import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
-import 'package:salute_medical/views/widgets/register_widget/sign_in_section_register_w.dart';
+import 'package:salute_medical/views/widgets/verify_widget/verify_register_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -18,26 +18,26 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-            children: const [
+            children: [
               // logo
-              LogoSectionLogin(),
-              Sbox(
+              const LogoSectionLogin(),
+              const Sbox(
                 h: 15,
               ),
-              PhoneNoLogin(),
-              Sbox(
+              const PhoneNoLogin(),
+              const Sbox(
                 h: 15,
               ),
-              CustomFormField(
+              const CustomFormField(
                 prefix: Icon(Icons.phone_android),
                 hintText: "Phone Numper ",
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),
-              Sbox(
+              const Sbox(
                 h: 20,
               ),
-              CustomFormField(
+              const CustomFormField(
                 prefix: Icon(Icons.lock),
                 suffix: Icon(Icons.remove_red_eye),
                 hintText: "Passworld ",
@@ -45,12 +45,13 @@ class LoginScreen extends StatelessWidget {
                 security: true,
                 hintTextColor: TColor.grey,
               ),
-              Sbox(
-                h: 20,
-              ),
+              const Sbox(h: 15),
+              const ForgotPassworldLogin(),
+              const Sbox(h: 50),
               CustomButton(
-                bgColor: TColor.iconGary,
+                bgColor: TColor.grey2,
                 textColor: Colors.grey,
+                onTap: () {},
                 text: 'login',
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
@@ -58,14 +59,10 @@ class LoginScreen extends StatelessWidget {
                 radius: 40,
                 borderColor: TColor.iconGary,
               ),
-              Sbox(h: 10),
-              ForgotPassworldLogin(),
-              Sbox(
-                h: 70,
+              const Sbox(
+                h: 15,
               ),
-              SignInRegisterW(
-                name: "Register",
-              )
+              const RegisterVerifyScreen(),
             ],
           ),
         ),
