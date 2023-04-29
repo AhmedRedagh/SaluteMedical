@@ -5,13 +5,13 @@ import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/screens/login_screen/login_screen.dart';
 import 'package:salute_medical/views/screens/verify_screen/verification_login_screen.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 import 'package:salute_medical/views/widgets/register_widget/mail_section_register.dart';
 import 'package:salute_medical/views/widgets/register_widget/password_section_register.dart';
 import 'package:salute_medical/views/widgets/register_widget/phone_section_register_w.dart';
 import 'package:salute_medical/views/widgets/register_widget/verify_section_register.dart';
-
 import '../../widgets/register_widget/pin_code_section_register.dart';
 import '../../widgets/register_widget/sign_in_section_register_w.dart';
 
@@ -31,7 +31,7 @@ class RegisterScreen extends StatelessWidget {
         child: Container(
           margin: const EdgeInsets.only(top: 45, left: 15, right: 15),
           child: Column(
-            children:  [
+            children: [
               //Number Section
               const PhoneSectionRegisterW(),
               const CustomFormField(
@@ -45,7 +45,7 @@ class RegisterScreen extends StatelessWidget {
               //verification Code Section
               const VerifySectionRegisterW(),
               const PinCodeRegisterW(),
-              const  Sbox(
+              const Sbox(
                 h: 10,
               ),
               //Mail Section
@@ -59,7 +59,7 @@ class RegisterScreen extends StatelessWidget {
                 h: 10,
               ),
               //PassWord Section
-              const  PassWordSectionRegisterW(),
+              const PassWordSectionRegisterW(),
               const CustomFormField(
                 hintText: "please enter yor Password",
                 hintTextColor: TColor.grey,
@@ -77,8 +77,9 @@ class RegisterScreen extends StatelessWidget {
               ),
               //RegisterButton
               CustomButton(
-                onTap: (){
-                  NavigationUsage.navigateTo(context, const VerificationLoginScreen());
+                onTap: () {
+                  NavigationUsage.navigateTo(
+                      context, const VerificationLoginScreen());
                 },
                 bgColor: TColor.grey2,
                 textColor: Colors.grey,
@@ -89,8 +90,15 @@ class RegisterScreen extends StatelessWidget {
                 radius: 40,
                 borderColor: TColor.iconGary,
               ),
-              const Sbox(h: 10),
-              const SignInRegisterW(name: "Login",)
+              const Sbox(
+                h: 30,
+              ),
+              SignInRegisterW(
+                name: "Login",
+                onTap: () {
+                  NavigationUsage.navigateTo(context, const LoginScreen());
+                },
+              )
             ],
           ),
         ),
