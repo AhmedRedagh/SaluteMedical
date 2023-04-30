@@ -16,7 +16,6 @@ class DocumentsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = DocumentsCubit.get(context);
     return BlocBuilder<DocumentsCubit, DocumentsStates>(
       builder: (context, state) => Scaffold(
         appBar: appBarW(
@@ -26,30 +25,30 @@ class DocumentsScreen extends StatelessWidget {
         body: Column(
           children: [
             ItemUploader(
-              uploadedImage: cubit.idImg,
+              uploadedImage: context.watch<DocumentsCubit>().idImg,
               name: 'ID Card',
             ),
             ItemUploader(
-              uploadedImage: cubit.driveLicenseImg,
+              uploadedImage: context.watch<DocumentsCubit>().driveLicenseImg,
               name: 'Driving license',
             ),
             const CarOwnerSection(),
             ConditionalBuilder(
               builder: (context) => ItemUploader(
-                uploadedImage: cubit.carLicenseImg,
+                uploadedImage: context.watch<DocumentsCubit>().carLicenseImg,
                 name: 'Car License',
               ),
-              condition: cubit.carOwner == true,
+              condition: context.watch<DocumentsCubit>().carOwner == true,
               fallback: (context) {
                 return const SizedBox();
               },
             ),
             ConditionalBuilder(
               builder: (context) => ItemUploader(
-                uploadedImage: cubit.carImg,
+                uploadedImage: context.watch<DocumentsCubit>().carImg,
                 name: 'Car Photo',
               ),
-              condition: cubit.carOwner == true,
+              condition: context.watch<DocumentsCubit>().carOwner == true,
               fallback: (context) {
                 return const SizedBox();
               },
