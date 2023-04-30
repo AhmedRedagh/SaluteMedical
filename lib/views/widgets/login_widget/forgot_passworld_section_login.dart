@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
+import 'package:salute_medical/views/screens/modify_passworld_screen/modify_passworld_screen.dart';
 
 class ForgotPassworldLogin extends StatelessWidget {
   const ForgotPassworldLogin({Key? key}) : super(key: key);
@@ -10,7 +12,9 @@ class ForgotPassworldLogin extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              NavigationUsage.navigateTo(context, ModifyPassworld());
+            },
             child: const Text(
               'Forgot your passworld?',
               style: TextStyle(

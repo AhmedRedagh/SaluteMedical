@@ -32,3 +32,13 @@ class PinCodeRegisterW extends StatelessWidget {
     );
   }
 }
+// CustomButton(
+// bgColor: TColor.grey2,
+// textColor: TColor.borderContainer,
+// onTap: () => {},
+// radius: 50,
+// borderColor: TColor.grey2,
+// text: 'Re-get Code',
+// fontSize: 17,
+// width: 130,
+// ),
