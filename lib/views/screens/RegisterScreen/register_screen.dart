@@ -95,6 +95,7 @@ class RegisterScreen extends StatelessWidget {
               ),
               SignInRegisterW(
                 name: "Login",
+                caption: 'Aleady have an account?',
                 onTap: () {
                   NavigationUsage.navigateTo(context, const LoginScreen());
                 },

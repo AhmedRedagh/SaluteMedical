@@ -65,10 +65,11 @@ class LoginScreen extends StatelessWidget {
                 h: 30,
               ),
               SignInRegisterW(
+                name: 'Register',
+                caption: 'Have no account yet?',
                 onTap: () {
                   NavigationUsage.navigateTo(context, const RegisterScreen());
                 },
-                name: "Register",
               )
             ],
           ),

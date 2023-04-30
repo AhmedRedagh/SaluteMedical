@@ -9,12 +9,12 @@ class PassWordSectionRegisterW extends StatelessWidget {
     return Row(
       children: [
         Image.asset(
-          'assets/images/lock-icon.png',
-          scale: 1.4,
+          'assets/images/password.png',
+          scale: 4,
         ),
         const SizedBox(width: 4),
         const CustomText(
-          text: 'Verification Code',
+          text: 'Password',
           fontW: FontWeight.w400,
           fontSize: 20,
         ),
