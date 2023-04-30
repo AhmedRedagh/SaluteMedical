@@ -3,16 +3,20 @@ import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 class SignInRegisterW extends StatelessWidget {
   final String? name;
-  const SignInRegisterW({super.key, this.name});
+  final String? caption ;
+  final Function? onTap;
+  const SignInRegisterW({super.key, this.name , this.caption , this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const CustomText(text: 'Aleady have an account?'),
+         CustomText(text: caption),
         TextButton(
-          onPressed: () {},
+          onPressed: (){
+            onTap!();
+          },
           child: CustomText(
             text: name,
             color: Colors.blue,

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
+import 'package:salute_medical/views/screens/RegisterScreen/register_screen.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
-import 'package:salute_medical/views/widgets/verify_widget/verify_register_screen.dart';
+import 'package:salute_medical/views/widgets/register_widget/sign_in_section_register_w.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -62,7 +64,13 @@ class LoginScreen extends StatelessWidget {
               const Sbox(
                 h: 15,
               ),
-              const RegisterVerifyScreen(),
+              SignInRegisterW(
+                name: 'Register',
+                caption: 'Have no account yet?',
+                onTap: (){
+                  NavigationUsage.navigateTo(context, const RegisterScreen());
+                },
+              )
             ],
           ),
         ),
