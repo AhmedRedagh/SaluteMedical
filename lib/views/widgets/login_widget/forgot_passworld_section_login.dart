@@ -13,7 +13,7 @@ class ForgotPassworldLogin extends StatelessWidget {
       children: [
         TextButton(
             onPressed: () {
-              NavigationUsage.navigateTo(context, ModifyPassworld());
+              NavigationUsage.navigateTo(context, const ModifyPassworld());
             },
             child: const Text(
               'Forgot your passworld?',

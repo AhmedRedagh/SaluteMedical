@@ -5,7 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/bloc/documents_cubit/documents_cubit.dart';
 import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
+import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
+
 import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
+//import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(
@@ -29,6 +32,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<DocumentsCubit>(
           create: (context) => DocumentsCubit(),
+        ),
+        BlocProvider<UserRequestsCubit>(
+          create: (context) => UserRequestsCubit(),
         ),
       ],
       child: ScreenUtilInit(

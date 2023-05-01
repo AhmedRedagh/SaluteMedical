@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salute_medical/views/screens/profile_screen/profile_screen.dart';
+import 'package:salute_medical/views/screens/home_screen/home_screen.dart';
+import 'package:salute_medical/views/screens/notification_screen/notification_screen.dart';
+import 'package:salute_medical/views/screens/profile_screen/profile_screen.dart';
+import 'package:salute_medical/views/screens/user_requests_screen/user_requests_screen.dart';
 import 'layout_states.dart';
 
 class LayoutCubit extends Cubit<LayoutStates> {
@@ -11,10 +15,11 @@ class LayoutCubit extends Cubit<LayoutStates> {
   int currentIndex = 0;
   int tab = 0;
 
-  List<Widget> screens = [
-    Container(),
-    Container(),
-    Container(),
+
+  List<Widget> screens = const [
+    HomeScreen(),
+    NotificationScreen(),
+    UserRequestsScreen(),
     ProfileScreen(),
   ];
 

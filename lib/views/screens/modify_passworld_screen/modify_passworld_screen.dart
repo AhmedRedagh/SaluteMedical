@@ -20,7 +20,7 @@ class ModifyPassworld extends StatelessWidget {
     return Scaffold(
       appBar: appBarW(
         name: 'Modify Password ',
-        context: context ,
+        context: context,
       ),
       body: SingleChildScrollView(
         child: Padding(

@@ -68,12 +68,12 @@ class LoginScreen extends StatelessWidget {
                 borderColor: TColor.iconGary,
               ),
               const Sbox(
-                h: 15,
+                h: 30,
               ),
               SignInRegisterW(
                 name: 'Register',
                 caption: 'Have no account yet?',
-                onTap: (){
+                onTap: () {
                   NavigationUsage.navigateTo(context, const RegisterScreen());
                 },
               )
