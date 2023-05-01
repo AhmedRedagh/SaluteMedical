@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
+import 'package:salute_medical/views/screens/layout_screen/layout_screen.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
@@ -32,7 +34,7 @@ class VerificationLoginScreen extends StatelessWidget {
               ),
               const CustomFormField(
                 prefix: Icon(Icons.phone_android),
-                hintText: "Phone Numper ",
+                hintText: "Phone Number ",
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),
@@ -49,9 +51,11 @@ class VerificationLoginScreen extends StatelessWidget {
                 h: 20,
               ),
               CustomButton(
-                bgColor: TColor.grey2,
-                textColor: TColor.borderContainer,
-                onTap: () => {},
+                bgColor: TColor.prim,
+                textColor: TColor.white,
+                onTap: () => {
+                NavigationUsage.navigateTo(context,const LayoutScreen())
+                },
                 radius: 50,
                 borderColor: TColor.grey2,
                 text: 'Login',

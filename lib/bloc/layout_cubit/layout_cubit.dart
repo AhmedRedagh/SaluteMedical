@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salute_medical/views/screens/profile_screen/profile_screen.dart';
 import 'layout_states.dart';
 
 class LayoutCubit extends Cubit<LayoutStates> {
@@ -14,7 +15,7 @@ class LayoutCubit extends Cubit<LayoutStates> {
     Container(),
     Container(),
     Container(),
-    Container(),
+    ProfileScreen(),
   ];
 
   void changeBottomNavigationBar(index) {

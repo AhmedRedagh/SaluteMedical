@@ -5,6 +5,7 @@ import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/screens/RegisterScreen/register_screen.dart';
+import 'package:salute_medical/views/screens/layout_screen/layout_screen.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
@@ -32,16 +33,19 @@ class LoginScreen extends StatelessWidget {
               ),
               const CustomFormField(
                 prefix: Icon(Icons.phone_android),
-                hintText: "Phone Numper ",
+                hintText: "Phone Number ",
                 inputType: TextInputType.number,
                 hintTextColor: TColor.grey,
               ),
               const Sbox(
                 h: 20,
               ),
-              const CustomFormField(
+               CustomFormField(
                 prefix: Icon(Icons.lock),
-                suffix: Icon(Icons.remove_red_eye),
+                suffix: IconButton(icon: Icon(Icons.remove_red_eye),
+                  onPressed: (){
+                  },
+                ),
                 hintText: "Passworld ",
                 inputType: TextInputType.visiblePassword,
                 security: true,
@@ -52,8 +56,10 @@ class LoginScreen extends StatelessWidget {
               const Sbox(h: 50),
               CustomButton(
                 bgColor: TColor.grey2,
-                textColor: Colors.grey,
-                onTap: () {},
+                textColor: TColor.grey,
+                onTap: () {
+                  NavigationUsage.navigateTo(context,const LayoutScreen());
+                },
                 text: 'login',
                 fontWeight: FontWeight.bold,
                 fontSize: 22,
