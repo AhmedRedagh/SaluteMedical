@@ -165,7 +165,7 @@ class RegisterScreen extends StatelessWidget {
                         style: TextStyle(
                             color: Colors.blue,
                             decoration: TextDecoration.underline),
-                      ))
+                      ),),
                 ],
               )
             ],
