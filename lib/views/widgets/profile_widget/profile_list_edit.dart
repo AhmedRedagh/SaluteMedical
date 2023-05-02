@@ -23,6 +23,8 @@ class SettingProfile extends StatelessWidget {
           w: 500.h,
           h: 1000.w,
           child: ListView(
+               shrinkWrap: true,
+               physics: const NeverScrollableScrollPhysics(),
               children:  [
                 ListTile(
                   onTap: (){
