@@ -11,11 +11,7 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CircleAvatar(
-          radius: 30,
-          backgroundColor: TColor.white,
-          child: Icon(Icons.person),
-        ),
+        Image.asset('assets/images/profile.png'),
         const Sbox(h: 15,),
         CustomText(text:
         'MOHAMED AHMED',
@@ -29,14 +25,14 @@ class EditProfile extends StatelessWidget {
           fontW: FontWeight.bold,
         ),
         const Sbox(h: 15,),
-        CustomButton(
-          bgColor: TColor.prim,
-          text: 'Edit Profile ',
-          fontSize: 15,
-          radius: 50,
-          width: 150,
-          height: 35,
-        ),
+        // CustomButton(
+        //   bgColor: TColor.prim,
+        //   text: 'Edit Profile ',
+        //   fontSize: 15,
+        //   radius: 50,
+        //   width: 150,
+        //   height: 35,
+        // ),
       ],
     );
   }

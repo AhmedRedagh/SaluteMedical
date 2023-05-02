@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/screens/edit_profile/edit_profile.dart';
+import 'package:salute_medical/views/screens/transaction_screen/transaction_screen.dart';
 
 class SettingProfile extends StatelessWidget {
   const SettingProfile({Key? key}) : super(key: key);
@@ -20,10 +23,13 @@ class SettingProfile extends StatelessWidget {
           w: 500.h,
           h: 1000.w,
           child: ListView(
-              children: const [
+              children:  [
                 ListTile(
+                  onTap: (){
+                    NavigationUsage.navigateTo(context, EditProfileScreen());
+                  },
                   title: CustomText(text:
-                  'Saved Address',
+                  'Edit Profile ',
                   fontW: FontWeight.bold,
                   ),
                   leading: Icon(
@@ -35,9 +41,13 @@ class SettingProfile extends StatelessWidget {
                     color: TColor.prim,
                   ),
                 ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
+                ),
                 ListTile(
                   title: CustomText(text:
-                  'My Reward',
+                  'My Trips',
                   fontW: FontWeight.bold,
                   ),
                   leading: Icon(
@@ -49,9 +59,16 @@ class SettingProfile extends StatelessWidget {
                     color: TColor.prim,
                   ),
                 ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
+                ),
                 ListTile(
+                  onTap: (){
+                    NavigationUsage.navigateTo(context,  TransactionScreen());
+                  },
                   title: CustomText(text:
-                  'Redeem promo code',
+                  'Transaction',
                     fontW: FontWeight.bold,
                   ),
                   leading: Icon(
@@ -63,13 +80,18 @@ class SettingProfile extends StatelessWidget {
                     color: TColor.prim,
                   ),
                 ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
+                ),
+                Sbox(h: 15,),
                 CustomText(text:
                 'General',
                   fontW: FontWeight.bold,
                 ),
                 ListTile(
                   title: CustomText(text:
-                  'Settings',
+                  'My documents',
                     fontW: FontWeight.bold,
                   ),
                   leading: Icon(
@@ -80,6 +102,10 @@ class SettingProfile extends StatelessWidget {
                     Icons.arrow_forward_ios_outlined,
                     color: TColor.prim,
                   ),
+                ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
                 ),
                 ListTile(
                   title: CustomText(text:
@@ -95,6 +121,10 @@ class SettingProfile extends StatelessWidget {
                     color: TColor.prim,
                   ),
                 ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
+                ),
                 ListTile(
                   title: CustomText(text:
                   'Term & Conditions',
@@ -109,6 +139,10 @@ class SettingProfile extends StatelessWidget {
                     color: TColor.prim,
                   ),
                 ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
+                ),
                 ListTile(
                   title: CustomText(text:
                   'privacy police',
@@ -122,6 +156,10 @@ class SettingProfile extends StatelessWidget {
                     Icons.arrow_forward_ios_outlined,
                     color: TColor.prim,
                   ),
+                ),
+                Container(
+                  height: 2.w,
+                  color: TColor.grey,
                 ),
               ],
             ),
