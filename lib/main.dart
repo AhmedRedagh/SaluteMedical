@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:salute_medical/bloc/documents_cubit/documents_cubit.dart';
 import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
-import 'package:salute_medical/bloc/welcome_cubit/welcome_cubit.dart';
+import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
+
 import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
+//import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(
@@ -24,11 +27,14 @@ class MyApp extends StatelessWidget {
         BlocProvider<LayoutCubit>(
           create: (context) => LayoutCubit(),
         ),
-        BlocProvider<WelcomeCubit>(
-          create: (context) => WelcomeCubit(),
-        ),
         BlocProvider<RegisterCubit>(
           create: (context) => RegisterCubit(),
+        ),
+        BlocProvider<DocumentsCubit>(
+          create: (context) => DocumentsCubit(),
+        ),
+        BlocProvider<UserRequestsCubit>(
+          create: (context) => UserRequestsCubit(),
         ),
       ],
       child: ScreenUtilInit(

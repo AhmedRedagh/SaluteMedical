@@ -81,6 +81,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.17.0"
+  conditional_builder_null_safety:
+    dependency: "direct main"
+    description:
+      name: conditional_builder_null_safety
+      sha256: "4428f40c20e222acead5e424fb9fba261733fc9da06ef58a08d9477207b0adfd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   crypto:
     dependency: transitive
     description:
@@ -105,6 +113,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.1.1"
+  dotted_line:
+    dependency: "direct main"
+    description:
+      name: dotted_line
+      sha256: "453e6d0ec4fe923ae00469dbc2973b9e9b11ef1c71abcded003d05af0a219d23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -129,6 +145,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      sha256: e6c7ad8e572379df86ea64ef0a5395889fba3954411d47ca021b888d79f8e798
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.11"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -166,6 +190,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: bdf9744ba973c47528d7c9217d7b72709adb96163ff50a0841e58e33bc99992a
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.11"
   flutter_rating_bar:
     dependency: "direct main"
     description:
@@ -216,6 +248,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   js:
     dependency: transitive
     description:
@@ -332,10 +372,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_windows
-      sha256: f53720498d5a543f9607db4b0e997c4b5438884de25b0f73098cc2671a51b130
+      sha256: d3f80b32e83ec208ac95253e0cd4d298e104fbc63cb29c5c69edaed43b0c69d6
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.5"
+    version: "2.1.6"
   pedantic:
     dependency: transitive
     description:
@@ -561,10 +601,10 @@ packages:
     dependency: transitive
     description:
       name: win32
-      sha256: a6f0236dbda0f63aa9a25ad1ff9a9d8a4eaaa5012da0dc59d21afdb1dc361ca4
+      sha256: dd8f9344bc305ae2923e3d11a2a911d9a4e2c7dd6fe0ed10626d63211a69676e
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.4"
+    version: "4.1.3"
   xdg_directories:
     dependency: transitive
     description:
@@ -574,5 +614,5 @@ packages:
     source: hosted
     version: "1.0.0"
 sdks:
-  dart: ">=2.19.3 <3.0.0"
+  dart: ">=2.19.2 <3.0.0"
   flutter: ">=3.3.0"
