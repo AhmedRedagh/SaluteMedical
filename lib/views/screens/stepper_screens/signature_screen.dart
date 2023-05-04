@@ -1,5 +1,4 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/screens/stepper_screens/signature_show_screen.dart';
@@ -59,31 +58,6 @@ class _SignatureScreenState extends State<SignatureScreen> {
                     NavigationUsage.navigateTo(
                         context, SignatureShow(data: signature));
                   }
-
-                  // await Navigator.of(context).push(
-                  //   MaterialPageRoute<SignatureShow>(
-                  //     builder: (BuildContext context) {
-                  //       return Scaffold(
-                  //         appBar: appBarW(
-                  //             context: context, name: 'Your Signature '),
-                  //         body: Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: [
-                  //             const CustomText(
-                  //                 text: 'Thank You',
-                  //                 fontW: FontWeight.bold,
-                  //                 fontSize: 50),
-                  //             SizedBox(
-                  //               width: double.infinity,
-                  //               height: 500,
-                  //               child: Image.memory(data),
-                  //             ),
-                  //           ],
-                  //         ),
-                  //       );
-                  //     },
-                  //   ),
-                  // );
                 },
               ),
               //CLEAR CANVAS
