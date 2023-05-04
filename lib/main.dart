@@ -7,9 +7,7 @@ import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/bloc/trip_cubit/trip_cubit.dart';
 import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
-
 import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
-//import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(
