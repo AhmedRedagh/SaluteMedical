@@ -26,40 +26,42 @@ class _TripDetailsState extends State<TripDetails> {
       builder: (context, state) => Scaffold(
         appBar: appBarW(
             context: context, name: 'Trip Number : ${TripDtls().tripNumber}'),
-        body: Container(
-          margin: const EdgeInsets.only(left: 10, right: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(
-                  left: 30,
+        body: SingleChildScrollView(
+          child: Container(
+            margin: const EdgeInsets.only(left: 10, right: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(
+                    left: 30,
+                  ),
+                  height: 55,
+                  width: double.infinity,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: numbers.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return NumberCircleItem(
+                        number: numbers[index],
+                        color: index == TripCubit.get(context).stepIndex
+                            ? const Color.fromARGB(255, 227, 130, 102)
+                            : Colors.white,
+                      );
+                    },
+                    separatorBuilder: (context, index) => const SizedBox(
+                        height: 1,
+                        width: 30,
+                        child: Center(
+                          child: DottedLine(
+                            dashColor: Colors.red,
+                          ),
+                        )),
+                  ),
                 ),
-                height: 55,
-                width: double.infinity,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: numbers.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return NumberCircleItem(
-                      number: numbers[index],
-                      color: index == TripCubit.get(context).stepIndex
-                          ? const Color.fromARGB(255, 227, 130, 102)
-                          : Colors.white,
-                    );
-                  },
-                  separatorBuilder: (context, index) => const SizedBox(
-                      height: 1,
-                      width: 30,
-                      child: Center(
-                        child: DottedLine(
-                          dashColor: Colors.red,
-                        ),
-                      )),
-                ),
-              ),
-              TripCubit.get(context).stepperScreens[stepIndex]
-            ],
+                TripCubit.get(context).stepperScreens[stepIndex]
+              ],
+            ),
           ),
         ),
       ),
