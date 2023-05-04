@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
@@ -9,7 +10,15 @@ class EditProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset('assets/images/profile.png'),
+        CircleAvatar(
+          radius: 73,
+          backgroundColor: Colors.green,
+          child: CircleAvatar(
+            backgroundColor: TColor.white,
+            radius: 70,
+            child: Image.asset('assets/images/profile.png',),
+          ),
+        ),
         const Sbox(h: 15,),
         const CustomText(text:
         'MOHAMED AHMED',
