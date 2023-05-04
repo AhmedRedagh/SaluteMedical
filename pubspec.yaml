@@ -65,6 +65,7 @@ dependencies:
   intl: ^0.18.1
 
   dotted_line: ^3.1.0
+  signature: ^5.3.2
   
   
 

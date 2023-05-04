@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/screens/layout_screen/layout_screen.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 
 class DocSuccessScreen extends StatelessWidget {
@@ -66,7 +68,8 @@ class DocSuccessScreen extends StatelessWidget {
                     width: 300,
                     radius: 40,
                     borderColor: TColor.iconGary,
-                    onTap: () => {},
+                    onTap: () => NavigationUsage.navigateTo(
+                        context, const LayoutScreen()),
                   ),
                 ),
               ],

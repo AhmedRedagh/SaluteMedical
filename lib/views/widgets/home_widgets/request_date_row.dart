@@ -20,12 +20,14 @@ class RequestDateSection extends StatelessWidget {
           maxLine: 1,
         ),
         const Sbox(w: 25),
-        CustomText(
-          text: DateFormat.j().format(DateTime.now()),
-          overflow: TextOverflow.ellipsis,
-          color: Colors.grey,
-          fontSize: 20,
-          maxLine: 1,
+        Expanded(
+          child: CustomText(
+            text: DateFormat.j().format(DateTime.now()),
+            overflow: TextOverflow.ellipsis,
+            color: Colors.grey,
+            fontSize: 20,
+            maxLine: 1,
+          ),
         ),
       ],
     );

@@ -36,3 +36,10 @@ class UserRequestsCubit extends Cubit<UserRequestsStates> {
     }
   }
 }
+
+class TripDtls {
+  TripDtls({this.destinationAdress, this.tripNumber, this.pickUpAdress});
+  String? tripNumber;
+  String? pickUpAdress;
+  String? destinationAdress;
+}

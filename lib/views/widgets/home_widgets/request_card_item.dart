@@ -2,97 +2,99 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/screens/trip_details/trip_details.dart';
 import 'package:salute_medical/views/widgets/home_widgets/from_to_card_section.dart';
 import 'package:salute_medical/views/widgets/home_widgets/request_card_button_column.dart';
 import 'package:salute_medical/views/widgets/home_widgets/request_date_row.dart';
 
 class RequestCard extends StatelessWidget {
-  const RequestCard({
-    super.key,
-    required this.tripNumber,
-    required this.pickUpAdress,
-    required this.destinationAdress,
-  });
-  final String tripNumber;
-  final String pickUpAdress;
-  final String destinationAdress;
+  const RequestCard({super.key, this.tripDetails});
+  final TripDtls? tripDetails;
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Row(
+        child: Column(
           children: [
-            Expanded(
-              //1st column//
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const CustomText(
+                  text: 'Trip Number:',
+                  color: Colors.black,
+                  fontW: FontWeight.bold,
+                  fontSize: 25,
+                  toUpperCase: false,
+                ),
+                const Sbox(
+                  w: 4,
+                ),
+                Expanded(
+                  child: CustomText(
+                    text: tripDetails?.tripNumber,
+                    color: Colors.black,
+                    overflow: TextOverflow.ellipsis,
+                    maxLine: 1,
+                    fontW: FontWeight.bold,
+                    fontSize: 25,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const CustomText(
-                        text: 'Trip Number:',
-                        color: Colors.black,
-                        fontW: FontWeight.bold,
-                        fontSize: 25,
+                      const Sbox(
+                        h: 18.0,
+                      ),
+                      //FromTo Row//
+                      const FromToSection(),
+                      const Sbox(
+                        h: 3,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomText(
+                              text: tripDetails?.pickUpAdress,
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 20,
+                              maxLine: 1,
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomText(
+                              text: tripDetails?.destinationAdress,
+                              overflow: TextOverflow.ellipsis,
+                              fontSize: 20,
+                              maxLine: 1,
+                            ),
+                          ),
+                        ],
                       ),
                       const Sbox(
-                        w: 4,
+                        h: 10,
                       ),
-                      CustomText(
-                        text: tripNumber,
-                        color: Colors.black,
-                        fontW: FontWeight.bold,
-                        fontSize: 25,
-                      ),
+                      //DateRow//
+                      const RequestDateSection(),
+                      const SizedBox(
+                        height: 15.0,
+                      )
                     ],
                   ),
-                  const Sbox(
-                    h: 18.0,
-                  ),
-                  //FromTo Row//
-                  const FromToSection(),
-                  const Sbox(
-                    h: 3,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomText(
-                          text: pickUpAdress,
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 20,
-                          maxLine: 1,
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomText(
-                          text: destinationAdress,
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 20,
-                          maxLine: 1,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Sbox(
-                    h: 10,
-                  ),
-                  //DateRow//
-                  const RequestDateSection(),
-                  const SizedBox(
-                    height: 15.0,
-                  )
-                ],
-              ),
+                ),
+                const DetailsButtonColumn()
+              ],
             ),
-            //2nd Column//
-            const DetailsButtonColumn()
           ],
         ),
       ),

@@ -83,10 +83,11 @@ class UserRequestsScreen extends StatelessWidget {
                       h: 10.0,
                     ),
                     itemBuilder: (context, index) {
-                      return const RequestCard(
-                        tripNumber: '433391068T',
-                        pickUpAdress: 'JAKARTA',
-                        destinationAdress: 'RIFKI ARBA',
+                      return RequestCard(
+                        tripDetails: TripDtls(
+                            destinationAdress: 'Refiki',
+                            pickUpAdress: 'JAKARTA',
+                            tripNumber: '215641818T'),
                       );
                     },
                   ),

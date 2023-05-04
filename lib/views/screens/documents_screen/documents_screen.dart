@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salute_medical/bloc/documents_cubit/documents_cubit.dart';
 import 'package:salute_medical/bloc/documents_cubit/documents_states.dart';
 import 'package:salute_medical/utils/sized_box.dart';
+import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
+import 'package:salute_medical/views/screens/documents_success_screen/documents_success_screen.dart';
 import 'package:salute_medical/views/widgets/documents_widget/car_owner_section_doc_w.dart';
 import 'package:salute_medical/views/widgets/documents_widget/item_uploader.dart';
 
@@ -68,7 +70,8 @@ class DocumentsScreen extends StatelessWidget {
                 width: 300,
                 radius: 40,
                 borderColor: TColor.iconGary,
-                onTap: () => {},
+                onTap: () => NavigationUsage.navigateTo(
+                    context, const DocSuccessScreen()),
               ),
             ),
           ],

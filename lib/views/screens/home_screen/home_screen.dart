@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
@@ -9,6 +10,11 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TripDtls trip = TripDtls(
+      tripNumber: '433391068T',
+      pickUpAdress: 'JAKARTA',
+      destinationAdress: 'RIFKI ARBA',
+    );
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -50,10 +56,8 @@ class HomeScreen extends StatelessWidget {
                     h: 10.0,
                   ),
                   itemBuilder: (context, index) {
-                    return const RequestCard(
-                      tripNumber: '433391068T',
-                      pickUpAdress: 'JAKARTA',
-                      destinationAdress: 'RIFKI ARBA',
+                    return RequestCard(
+                      tripDetails: trip,
                     );
                   },
                 ),
