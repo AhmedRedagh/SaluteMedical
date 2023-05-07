@@ -5,7 +5,6 @@ import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/widgets/profile_widget/edit_profile.dart';
 import 'package:salute_medical/views/widgets/profile_widget/profile_list_edit.dart';
 
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -13,22 +12,25 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(20.0),
-      child: Center(
+      child: SizedBox(
+        width: 1.sw,
+        height: 1.sh,
         child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
-            child: Column(
-              children: [
-                const EditProfile(),
-                const Sbox(h: 20,),
-                Container(
-                  height: 5.w,
-                  color: TColor.grey2,
-                ),
-                const Sbox(h: 20,),
-                const SettingProfile()
-              ],
-            ),
+          child: Column(
+            children: [
+              const EditProfile(),
+              const Sbox(
+                h: 20,
+              ),
+              Container(
+                height: 5.w,
+                color: TColor.grey2,
+              ),
+              const Sbox(
+                h: 20,
+              ),
+              const SettingProfile()
+            ],
           ),
         ),
       ),

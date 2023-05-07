@@ -9,29 +9,37 @@ class EditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: const  [
+      children: const [
         CircleAvatar(
           radius: 73,
           backgroundColor: Colors.green,
           child: CircleAvatar(
             backgroundColor: TColor.white,
             radius: 70,
-            backgroundImage: AssetImage('assets/images/profile.png',),
+            backgroundImage: AssetImage(
+              'assets/images/profile.png',
+            ),
           ),
         ),
-         Sbox(h: 15,),
-         CustomText(text:
-        'MOHAMED AHMED',
+        Sbox(
+          h: 15,
+        ),
+        CustomText(
+          text: 'MOHAMED AHMED',
           fontSize: 20,
           fontW: FontWeight.bold,
         ),
-         Sbox(h: 15,),
-         CustomText(text:
-        '625484821312',
+        Sbox(
+          h: 15,
+        ),
+        CustomText(
+          text: '625484821312',
           fontSize: 20,
           fontW: FontWeight.bold,
         ),
-         Sbox(h: 15,),
+        Sbox(
+          h: 15,
+        ),
         // CustomButton(
         //   bgColor: TColor.prim,
         //   text: 'Edit Profile ',

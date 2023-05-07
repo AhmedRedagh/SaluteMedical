@@ -11,8 +11,17 @@ import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dar
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
 import 'package:salute_medical/views/widgets/register_widget/sign_in_section_register_w.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String? password;
+  String? phoneNumber;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,64 +29,95 @@ class LoginScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              // logo
-              const LogoSectionLogin(),
-              const Sbox(
-                h: 15,
-              ),
-              const PhoneNoLogin(),
-              const Sbox(
-                h: 15,
-              ),
-              const CustomFormField(
-                prefix: Icon(Icons.phone_android),
-                hintText: "Phone Number ",
-                inputType: TextInputType.number,
-                hintTextColor: TColor.grey,
-              ),
-              const Sbox(
-                h: 20,
-              ),
-               CustomFormField(
-                prefix: const Icon(Icons.lock),
-                suffix: IconButton(icon: const Icon(Icons.remove_red_eye),
-                  onPressed: (){
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                // logo
+                const LogoSectionLogin(),
+                const Sbox(
+                  h: 15,
+                ),
+                const PhoneNoLogin(),
+                const Sbox(
+                  h: 15,
+                ),
+                CustomFormField(
+                  prefix: const Icon(Icons.phone_android),
+                  hintText: "Phone Number ",
+                  inputType: TextInputType.number,
+                  hintTextColor: TColor.grey,
+                  validation: "Please write your phone number",
+                  number: 8,
+                  onChanged: (value) {
+                    phoneNumber = value;
+                    setState(() {});
+                  },
+                  saved: (value) {
+                    phoneNumber = value;
                   },
                 ),
-                hintText: "Passworld ",
-                inputType: TextInputType.visiblePassword,
-                security: true,
-                hintTextColor: TColor.grey,
-              ),
-              const Sbox(h: 15),
-              const ForgotPassworldLogin(),
-              const Sbox(h: 50),
-              CustomButton(
-                bgColor: TColor.grey2,
-                textColor: TColor.grey,
-                onTap: () {
-                  NavigationUsage.navigateTo(context,const LayoutScreen());
-                },
-                text: 'login',
-                fontWeight: FontWeight.bold,
-                fontSize: 22,
-                width: 300,
-                radius: 40,
-                borderColor: TColor.iconGary,
-              ),
-              const Sbox(
-                h: 30,
-              ),
-              SignInRegisterW(
-                name: 'Register',
-                caption: 'Have no account yet?',
-                onTap: () {
-                  NavigationUsage.navigateTo(context, const RegisterScreen());
-                },
-              )
-            ],
+                const Sbox(
+                  h: 20,
+                ),
+                CustomFormField(
+                  number: 9,
+                  prefix: const Icon(Icons.lock),
+                  suffix: IconButton(
+                    icon: const Icon(Icons.remove_red_eye),
+                    onPressed: () {},
+                  ),
+                  hintText: "Passworld ",
+                  inputType: TextInputType.visiblePassword,
+                  security: true,
+                  validation: "Please write your password",
+                  hintTextColor: TColor.grey,
+                  onChanged: (value) {
+                    password = value;
+                    setState(() {});
+                  },
+                  saved: (value) {
+                    password = value;
+                  },
+                ),
+                const Sbox(h: 15),
+                const ForgotPassworldLogin(),
+                const Sbox(h: 50),
+                CustomButton(
+                  bgColor: phoneNumber != null && password != null
+                      ? Colors.blue
+                      : TColor.grey2,
+                  textColor: phoneNumber != null && password != null
+                      ? Colors.white
+                      : TColor.grey,
+                  onTap: () {
+                    // NavigationUsage.navigateTo(context, const LayoutScreen());
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      NavigationUsage.navigateTo(context, const LayoutScreen());
+                      debugPrint(phoneNumber);
+                      debugPrint(password);
+                    }
+                  },
+                  text: 'login',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  width: 300,
+                  radius: 40,
+                  borderColor: TColor.iconGary,
+                ),
+                const Sbox(
+                  h: 30,
+                ),
+                SignInRegisterW(
+                  name: 'Register',
+                  caption: 'Have no account yet?',
+                  onTap: () {
+                    NavigationUsage.navigateTo(context, const RegisterScreen());
+                  },
+                )
+              ],
+            ),
           ),
         ),
       ),

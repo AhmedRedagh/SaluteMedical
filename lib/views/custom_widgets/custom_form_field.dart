@@ -16,6 +16,7 @@ class CustomFormField extends StatelessWidget {
   final String? labelText;
   final Color? hintTextColor;
   final Color? labelTextColor;
+  final Function(String)? onSubmit;
 
   const CustomFormField({
     Key? key,
@@ -32,11 +33,13 @@ class CustomFormField extends StatelessWidget {
     this.number,
     this.hintTextColor,
     this.labelTextColor,
+    this.onSubmit,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: onSubmit,
       validator: (value) {
         if (value!.isEmpty || value.length < number!) {
           return validation;

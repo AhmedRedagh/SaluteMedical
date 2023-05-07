@@ -20,35 +20,40 @@ class HomeScreen extends StatelessWidget {
         body: Container(
           margin: const EdgeInsets.only(top: 20, right: 10, left: 10),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //logo section//
-              Image.asset(
-                'assets/images/logo.png',
-                scale: 2,
+              Center(
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  scale: 2,
+                ),
               ),
               const Sbox(h: 10),
               //button section
-              const CustomText(
-                text: 'Welcome Back',
-                fontSize: 35,
-                fontW: FontWeight.bold,
+              const Center(
+                child: CustomText(
+                  text: 'Welcome Back',
+                  fontSize: 35,
+                  fontW: FontWeight.bold,
+                ),
               ),
               const Sbox(h: 30),
 
-              Row(children: [
-                CustomButton(
-                  bgColor: Colors.white,
-                  text: 'All Requests',
-                  fontSize: 18,
-                  borderColor: const Color.fromARGB(200, 89, 138, 233),
-                  textColor: Colors.black,
-                  onTap: () {},
-                  width: 150,
-                  radius: 50,
-                  height: 40,
-                )
-              ]),
-
+              CustomButton(
+                bgColor: Colors.white,
+                text: 'All Requests',
+                fontSize: 18,
+                borderColor: const Color.fromARGB(200, 89, 138, 233),
+                textColor: Colors.black,
+                onTap: () {},
+                width: 150,
+                radius: 50,
+                height: 40,
+              ),
+              const Sbox(
+                h: 6,
+              ),
               Expanded(
                 child: ListView.separated(
                   itemCount: 15,
