@@ -11,6 +11,8 @@ import 'package:salute_medical/views/widgets/home_widgets/request_card_item.dart
 class UserRequestsScreen extends StatelessWidget {
   const UserRequestsScreen({Key? key}) : super(key: key);
 
+  final int initialIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -49,7 +51,7 @@ class UserRequestsScreen extends StatelessWidget {
                     radius: 50,
                     height: 40,
                   ),
-                  const Sbox(w: 3),
+                  const Sbox(w: 6),
                   CustomButton(
                     bgColor: UserRequestsCubit.get(context).color[1],
                     text: 'Approval',
@@ -62,7 +64,7 @@ class UserRequestsScreen extends StatelessWidget {
                     radius: 50,
                     height: 40,
                   ),
-                  const Sbox(w: 3),
+                  const Sbox(w: 6),
                   CustomButton(
                     bgColor: UserRequestsCubit.get(context).color[2],
                     text: 'Refused',
