@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:salute_medical/bloc/trip_cubit/trip_cubit.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
@@ -26,17 +27,18 @@ class SignatureShow extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(top: 80, bottom: 40),
             child: CustomButton(
-              bgColor: TColor.prim,
-              textColor: Colors.white,
-              text: 'Done',
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
-              width: 300,
-              radius: 40,
-              borderColor: TColor.iconGary,
-              onTap: () =>
-                  NavigationUsage.navigateTo(context, const LayoutScreen()),
-            ),
+                bgColor: TColor.prim,
+                textColor: Colors.white,
+                text: 'Done',
+                fontWeight: FontWeight.bold,
+                fontSize: 22,
+                width: 300,
+                radius: 40,
+                borderColor: TColor.iconGary,
+                onTap: () => {
+                      NavigationUsage.navigateTo(context, const LayoutScreen()),
+                      TripCubit.get(context).stepIndex = 0
+                    }),
           ),
         ],
       ),
