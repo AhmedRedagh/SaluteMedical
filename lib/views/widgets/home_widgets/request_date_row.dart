@@ -15,8 +15,9 @@ class RequestDateSection extends StatelessWidget {
         CustomText(
           text: DateFormat.yMMMd().format(DateTime.now()),
           overflow: TextOverflow.ellipsis,
-          color: Colors.grey,
-          fontSize: 20,
+          color: Colors.grey.shade600,
+          fontW: FontWeight.bold,
+          fontSize: 16,
           maxLine: 1,
         ),
         const Sbox(w: 25),
@@ -24,8 +25,9 @@ class RequestDateSection extends StatelessWidget {
           child: CustomText(
             text: DateFormat.j().format(DateTime.now()),
             overflow: TextOverflow.ellipsis,
-            color: Colors.grey,
-            fontSize: 20,
+            color: Colors.grey.shade600,
+            fontW: FontWeight.bold,
+            fontSize: 16,
             maxLine: 1,
           ),
         ),
