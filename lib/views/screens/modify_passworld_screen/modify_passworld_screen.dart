@@ -26,16 +26,20 @@ class ModifyPassworld extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
-            children:  [
-            //  phone number section
+            children: [
+              //  phone number section
               const PhoneSectionRegisterW(),
               const CustomFormField(
                 hintText: "please input ",
               ),
-              const Sbox(h: 15,),
+              const Sbox(
+                h: 15,
+              ),
               const VerifySectionRegisterW(),
               const PinCodeRegisterW(),
-              const Sbox(h: 15,),
+              const Sbox(
+                h: 15,
+              ),
               const PassWordSectionRegisterW(),
               const CustomFormField(
                 hintText: "please enter your Password",
@@ -47,11 +51,13 @@ class ModifyPassworld extends StatelessWidget {
                 height: true,
                 maxLine: 2,
                 text:
-                '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
+                    '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
               ),
-              const Sbox(h:80 ,),
+              const Sbox(
+                h: 80,
+              ),
               CustomButton(
-                onTap: (){
+                onTap: () {
                   NavigationUsage.navigateTo(context, const ProfileScreen());
                 },
                 bgColor: TColor.grey2,

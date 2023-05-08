@@ -31,6 +31,7 @@ class UserRequestsCubit extends Cubit<UserRequestsStates> {
 
       return refusedRequsts;
     } else {
+      isApproved = null;
       emit(AllRequestsState());
       return allRequests;
     }

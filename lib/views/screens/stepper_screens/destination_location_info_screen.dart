@@ -93,7 +93,8 @@ class DestLocInfoScreen extends StatelessWidget {
         const Sbox(h: 50),
         Center(
           child: CustomButton(
-            bgColor: Colors.green.shade900,
+            bgColor: const Color.fromARGB(255, 140, 184, 52),
+            borderColor: const Color.fromARGB(255, 140, 184, 52),
             textColor: Colors.black,
             text: ' Get Destination Location ',
             fontWeight: FontWeight.bold,

@@ -7,13 +7,14 @@ class FromToSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: const [
+      children: [
         Expanded(
           child: CustomText(
             text: 'From ',
             overflow: TextOverflow.ellipsis,
-            fontSize: 20,
-            color: Colors.grey,
+            color: Colors.grey.shade600,
+            fontW: FontWeight.bold,
+            fontSize: 18,
             maxLine: 1,
           ),
         ),
@@ -21,8 +22,9 @@ class FromToSection extends StatelessWidget {
           child: CustomText(
             text: 'To ',
             overflow: TextOverflow.ellipsis,
-            fontSize: 20,
-            color: Colors.grey,
+            color: Colors.grey.shade600,
+            fontW: FontWeight.bold,
+            fontSize: 18,
             maxLine: 1,
           ),
         ),

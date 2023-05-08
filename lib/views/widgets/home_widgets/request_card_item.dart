@@ -13,11 +13,26 @@ import 'package:salute_medical/views/widgets/home_widgets/request_card_button_co
 import 'package:salute_medical/views/widgets/home_widgets/request_date_row.dart';
 
 class RequestCard extends StatelessWidget {
-  const RequestCard({super.key, this.tripDetails});
+  const RequestCard({
+    super.key,
+    this.tripDetails,
+    this.isaproved,
+  });
   final TripDtls? tripDetails;
+  final bool? isaproved;
+  Color cardColor() {
+    if (isaproved == true) {
+      return Colors.blue.shade100;
+    } else if (isaproved == false) {
+      return const Color.fromARGB(255, 227, 130, 102);
+    }
+    return Colors.white;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: cardColor(),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(

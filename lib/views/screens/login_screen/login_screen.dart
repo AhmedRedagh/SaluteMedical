@@ -22,6 +22,18 @@ class _LoginScreenState extends State<LoginScreen> {
   String? password;
   String? phoneNumber;
   final _formKey = GlobalKey<FormState>();
+  Color bcgColor = TColor.grey2;
+  Color txtColor = TColor.grey;
+
+  void colorToggle() {
+    if (_formKey.currentState!.validate()) {
+      bcgColor = Colors.blue;
+      txtColor = Colors.white;
+    } else {
+      bcgColor = TColor.grey2;
+      txtColor = TColor.grey;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   validation: "Please write your phone number",
                   number: 8,
                   onChanged: (value) {
+                    colorToggle();
                     phoneNumber = value;
                     setState(() {});
                   },
@@ -73,7 +86,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   validation: "Please write your password",
                   hintTextColor: TColor.grey,
                   onChanged: (value) {
+                    colorToggle();
                     password = value;
+
                     setState(() {});
                   },
                   saved: (value) {
@@ -84,12 +99,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 const ForgotPassworldLogin(),
                 const Sbox(h: 50),
                 CustomButton(
-                  bgColor: phoneNumber != null && password != null
-                      ? Colors.blue
-                      : TColor.grey2,
-                  textColor: phoneNumber != null && password != null
-                      ? Colors.white
-                      : TColor.grey,
+                  bgColor: bcgColor,
+                  textColor: txtColor,
                   onTap: () {
                     // NavigationUsage.navigateTo(context, const LayoutScreen());
                     if (_formKey.currentState!.validate()) {

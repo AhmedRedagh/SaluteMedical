@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
-import '../../../config/theme_colors.dart';
-
 class PinCodeRegisterW extends StatelessWidget {
-  const PinCodeRegisterW({super.key});
-
+  const PinCodeRegisterW({super.key, this.btnColor = TColor.iconGary});
+  final Color? btnColor;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -22,11 +21,11 @@ class PinCodeRegisterW extends StatelessWidget {
         const SizedBox(width: 50),
         TextButton(
             onPressed: () {},
-            child: const CustomText(
+            child: CustomText(
               text: 'Get Code',
               fontSize: 20,
               fontW: FontWeight.bold,
-              color: TColor.iconGary,
+              color: btnColor as Color,
             ))
       ],
     );

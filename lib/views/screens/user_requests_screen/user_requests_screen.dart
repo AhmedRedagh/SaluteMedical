@@ -86,6 +86,7 @@ class UserRequestsScreen extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       return RequestCard(
+                        isaproved: UserRequestsCubit.get(context).isApproved,
                         tripDetails: TripDtls(
                             destinationAdress: 'Refiki',
                             pickUpAdress: 'JAKARTA',
