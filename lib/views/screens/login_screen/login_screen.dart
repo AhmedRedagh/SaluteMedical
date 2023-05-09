@@ -22,21 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
   String? password;
   String? phoneNumber;
   final _formKey = GlobalKey<FormState>();
-  Color bcgColor = TColor.grey2;
-  Color txtColor = TColor.grey;
-
-  void colorToggle() {
-    if (_formKey.currentState!.validate()) {
-      bcgColor = Colors.blue;
-      txtColor = Colors.white;
-    } else {
-      bcgColor = TColor.grey2;
-      txtColor = TColor.grey;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    print("phone number $phoneNumber and password $password");
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -62,8 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   validation: "Please write your phone number",
                   number: 8,
                   onChanged: (value) {
-                    colorToggle();
                     phoneNumber = value;
+                    if (value == "") {
+                      phoneNumber = null;
+                    }
                     setState(() {});
                   },
                   saved: (value) {
@@ -86,9 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   validation: "Please write your password",
                   hintTextColor: TColor.grey,
                   onChanged: (value) {
-                    colorToggle();
                     password = value;
-
+                    if (value == "") {
+                      password = null;
+                    }
                     setState(() {});
                   },
                   saved: (value) {
@@ -99,8 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 const ForgotPassworldLogin(),
                 const Sbox(h: 50),
                 CustomButton(
-                  bgColor: bcgColor,
-                  textColor: txtColor,
+                  bgColor: phoneNumber != null && password != null
+                      ? Colors.blue
+                      : TColor.grey2,
+                  textColor: phoneNumber != null && password != null
+                      ? TColor.white
+                      : Colors.grey,
                   onTap: () {
                     // NavigationUsage.navigateTo(context, const LayoutScreen());
                     if (_formKey.currentState!.validate()) {
@@ -109,6 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       debugPrint(phoneNumber);
                       debugPrint(password);
                     }
+                    setState(() {});
                   },
                   text: 'login',
                   fontWeight: FontWeight.bold,
