@@ -4,29 +4,36 @@ import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 class EditProfile extends StatelessWidget {
-  const EditProfile({Key? key}) : super(key: key);
+  final bool isEdit;
 
+  const EditProfile({Key? key, this.isEdit = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:  [
+      children: [
         Stack(
           alignment: AlignmentDirectional.bottomStart,
-          children: const [CircleAvatar(
-            radius: 73,
-            backgroundColor: Colors.green,
-            child: CircleAvatar(
-              backgroundColor: TColor.white,
-              radius: 70,
-              backgroundImage: AssetImage(
-                'assets/images/profile.png',
+          children: [
+            const CircleAvatar(
+              radius: 73,
+              backgroundColor: Colors.green,
+              child: CircleAvatar(
+                backgroundColor: TColor.white,
+                radius: 70,
+                backgroundImage: AssetImage(
+                  'assets/images/profile.png',
+                ),
               ),
             ),
-          ),
-            CircleAvatar(
-              radius: 20,
-              child: Icon(Icons.camera_alt),
-            ),
+            isEdit
+                ? InkWell(
+                    onTap: () => () {},
+                    child: const CircleAvatar(
+                      radius: 20,
+                      child: Icon(Icons.camera_alt),
+                    ),
+                  )
+                : const SizedBox()
           ],
         ),
         const Sbox(

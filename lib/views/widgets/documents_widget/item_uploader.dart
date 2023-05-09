@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salute_medical/bloc/documents_cubit/documents_cubit.dart';
 
 import '../../custom_widgets/custom_text.dart';
@@ -22,7 +23,7 @@ class ItemUploader extends StatelessWidget {
             fontW: FontWeight.bold,
           ),
           InkWell(
-            onTap: () => DocumentsCubit.get(context).pickerResult(name),
+            onTap: () => context.read<DocumentsCubit>().pickerResult(name),
             child: Container(
               margin: const EdgeInsets.all(20),
               child: ConditionalBuilder(

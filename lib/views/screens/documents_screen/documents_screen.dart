@@ -36,13 +36,15 @@ class DocumentsScreen extends StatelessWidget {
                   name: 'ID Card',
                 ),
                 ItemUploader(
-                  uploadedImage: context.watch<DocumentsCubit>().driveLicenseImg,
+                  uploadedImage:
+                      context.watch<DocumentsCubit>().driveLicenseImg,
                   name: 'Driving license',
                 ),
                 const CarOwnerSection(),
                 ConditionalBuilder(
                   builder: (context) => ItemUploader(
-                    uploadedImage: context.watch<DocumentsCubit>().carLicenseImg,
+                    uploadedImage:
+                        context.watch<DocumentsCubit>().carLicenseImg,
                     name: 'Car License',
                   ),
                   condition: context.watch<DocumentsCubit>().carOwner == true,
