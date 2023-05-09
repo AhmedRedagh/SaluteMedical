@@ -1,12 +1,23 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
-class EditProfile extends StatelessWidget {
+class EditProfile extends StatefulWidget {
   final bool isEdit;
 
   const EditProfile({Key? key, this.isEdit = false}) : super(key: key);
+
+  @override
+  State<EditProfile> createState() => _EditProfileState();
+}
+
+class _EditProfileState extends State<EditProfile> {
+  File? image ;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -14,20 +25,18 @@ class EditProfile extends StatelessWidget {
         Stack(
           alignment: AlignmentDirectional.bottomStart,
           children: [
-            const CircleAvatar(
+             CircleAvatar(
               radius: 73,
               backgroundColor: Colors.green,
               child: CircleAvatar(
                 backgroundColor: TColor.white,
                 radius: 70,
-                backgroundImage: AssetImage(
-                  'assets/images/profile.png',
-                ),
+                backgroundImage: image ==null ? null : FileImage(image!),
               ),
             ),
-            isEdit
+            widget.isEdit
                 ? InkWell(
-                    onTap: () => () {},
+                    onTap: () => getImage(),
                     child: const CircleAvatar(
                       radius: 20,
                       child: Icon(Icons.camera_alt),
@@ -66,4 +75,17 @@ class EditProfile extends StatelessWidget {
       ],
     );
   }
+  Future getImage() async {
+    try {
+      final images = await ImagePicker().pickImage(source: ImageSource.gallery);
+      final imageFile = File(images!.path);
+      setState(() {
+        image = imageFile;
+      });
+    } on PlatformException catch (e) {
+       print(e);
+    }
+  }
 }
+
+
