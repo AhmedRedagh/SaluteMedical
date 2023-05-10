@@ -13,6 +13,15 @@ class NavigationUsage {
   static getBack(context) {
     Navigator.pop(context);
   }
+
+  static void navigateAndFinish({@required route, @required context}) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => route()));
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(
+          builder: (context) => route,
+        ),
+        (Route<dynamic> route) => false);
+  }
 }
 
 Color isApproved(bool? approved) {

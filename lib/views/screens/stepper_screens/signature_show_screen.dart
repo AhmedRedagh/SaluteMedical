@@ -36,7 +36,8 @@ class SignatureShow extends StatelessWidget {
                 radius: 40,
                 borderColor: TColor.iconGary,
                 onTap: () => {
-                      NavigationUsage.navigateTo(context, const LayoutScreen()),
+                      NavigationUsage.navigateAndFinish(
+                          route: const LayoutScreen(), context: context),
                       TripCubit.get(context).stepIndex = 0
                     }),
           ),
