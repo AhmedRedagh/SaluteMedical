@@ -9,15 +9,17 @@ import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 class EditProfile extends StatefulWidget {
   final bool isEdit;
-
-  const EditProfile({Key? key, this.isEdit = false}) : super(key: key);
+  final double? radius;
+  const EditProfile({Key? key, this.isEdit = false, this.radius = 73})
+      : super(key: key);
 
   @override
   State<EditProfile> createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
-  File? image ;
+  File? image;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,13 +27,14 @@ class _EditProfileState extends State<EditProfile> {
         Stack(
           alignment: AlignmentDirectional.bottomStart,
           children: [
-             CircleAvatar(
-              radius: 73,
+            CircleAvatar(
+              radius: widget.radius,
               backgroundColor: Colors.green,
-              child: CircleAvatar(
+              child: const CircleAvatar(
                 backgroundColor: TColor.white,
                 radius: 70,
-                backgroundImage: image ==null ? null : FileImage(image!),
+                backgroundImage: NetworkImage(
+                    'https://cdn.dribbble.com/users/1418633/screenshots/4936819/media/a40d3f7986e7993a0553fc5d52db8e33.png?compress=1&resize=800x600&vertical=top'),
               ),
             ),
             widget.isEdit
@@ -75,6 +78,7 @@ class _EditProfileState extends State<EditProfile> {
       ],
     );
   }
+
   Future getImage() async {
     try {
       final images = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -83,9 +87,7 @@ class _EditProfileState extends State<EditProfile> {
         image = imageFile;
       });
     } on PlatformException catch (e) {
-       print(e);
+      debugPrint(e.toString());
     }
   }
 }
-
-
