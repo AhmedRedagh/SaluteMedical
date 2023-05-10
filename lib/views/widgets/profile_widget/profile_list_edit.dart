@@ -4,7 +4,7 @@ import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
-import 'package:salute_medical/views/screens/documents_screen/documents_screen.dart';
+import 'package:salute_medical/views/screens/documents_show_screen/documents_show_screen.dart';
 import 'package:salute_medical/views/screens/edit_profile/edit_profile.dart';
 import 'package:salute_medical/views/screens/transaction_screen/transaction_screen.dart';
 
@@ -92,8 +92,8 @@ class SettingProfile extends StatelessWidget {
               fontW: FontWeight.bold,
             ),
             ListTile(
-              onTap: () =>
-                  NavigationUsage.navigateTo(context, const DocumentsScreen()),
+              onTap: () => NavigationUsage.navigateTo(
+                  context, const DocumentsShowScreen()),
               title: const CustomText(
                 text: 'My documents',
                 fontW: FontWeight.bold,

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/config/theme_colors.dart';
@@ -18,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const EditProfile(),
+              EditProfile(),
               const Sbox(
                 h: 20,
               ),

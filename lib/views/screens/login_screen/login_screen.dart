@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("phone number $phoneNumber and password $password");
+    debugPrint("phone number $phoneNumber and password $password");
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),

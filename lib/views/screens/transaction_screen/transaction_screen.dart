@@ -19,18 +19,22 @@ class TransactionScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const EditProfile(),
-                  const CustomText(text:
-                  'Your Balance : 150 usd',
+                  const EditProfile(radius: 30),
+                  const CustomText(
+                    text: 'Your Balance : 150 usd',
                     fontW: FontWeight.bold,
                     fontSize: 30,
                   ),
-                  const Sbox(h: 40,),
-                   Container(
+                  const Sbox(
+                    h: 40,
+                  ),
+                  Container(
                     height: 5.w,
                     color: TColor.grey2,
                   ),
-                  const Sbox(h: 15,),
+                  const Sbox(
+                    h: 15,
+                  ),
                   const ListTransaction(),
                 ],
               ),
