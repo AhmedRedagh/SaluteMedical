@@ -9,8 +9,8 @@ class SendDocuments extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarW(name: 'Send Documents'),
-      body: Column(
-        children: const [
+      body: const Column(
+        children: [
           SendDocumentsCard(
             name: 'ID Card',
           ),
