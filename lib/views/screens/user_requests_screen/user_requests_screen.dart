@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
 import 'package:salute_medical/bloc/user_requests_bloc/user_requests_states.dart';
 import 'package:salute_medical/utils/sized_box.dart';
-import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/widgets/buttons_selection_section/buttons_selection_section.dart';
 
 import 'package:salute_medical/views/widgets/home_widgets/request_card_item.dart';
 
@@ -38,46 +38,9 @@ class UserRequestsScreen extends StatelessWidget {
                 const Sbox(
                   h: 20,
                 ),
-                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                  CustomButton(
-                    bgColor: UserRequestsCubit.get(context).color[0],
-                    text: 'All ',
-                    fontSize: 18,
-                    borderColor: Colors.black,
-                    textColor: Colors.black,
-                    onTap: () => UserRequestsCubit.get(context)
-                        .approvalCheck(approved: null, index: 0),
-                    width: 100,
-                    radius: 50,
-                    height: 40,
-                  ),
-                  const Sbox(w: 6),
-                  CustomButton(
-                    bgColor: UserRequestsCubit.get(context).color[1],
-                    text: 'Approval',
-                    fontSize: 18,
-                    borderColor: Colors.black,
-                    textColor: Colors.black,
-                    onTap: () => UserRequestsCubit.get(context)
-                        .approvalCheck(approved: true, index: 1),
-                    width: 100,
-                    radius: 50,
-                    height: 40,
-                  ),
-                  const Sbox(w: 6),
-                  CustomButton(
-                    bgColor: UserRequestsCubit.get(context).color[2],
-                    text: 'Refused',
-                    fontSize: 18,
-                    borderColor: Colors.black,
-                    textColor: Colors.black,
-                    onTap: () => UserRequestsCubit.get(context)
-                        .approvalCheck(approved: false, index: 2),
-                    width: 100,
-                    radius: 50,
-                    height: 40,
-                  )
-                ]),
+                const RequestsButtons(),
+
+                /// condition in index
                 Expanded(
                   child: ListView.separated(
                     itemCount: 15,
@@ -86,7 +49,6 @@ class UserRequestsScreen extends StatelessWidget {
                     ),
                     itemBuilder: (context, index) {
                       return RequestCard(
-                        isaproved: UserRequestsCubit.get(context).isApproved,
                         tripDetails: TripDtls(
                             destinationAdress: 'Refiki',
                             pickUpAdress: 'JAKARTA',

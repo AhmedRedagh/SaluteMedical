@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:path/path.dart';
 import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/screens/trip_details/trip_details.dart';
+import 'package:salute_medical/views/widgets/buttons_selection_section/buttons_selection_section.dart';
 import 'package:salute_medical/views/widgets/home_widgets/from_to_card_section.dart';
 import 'package:salute_medical/views/widgets/home_widgets/request_card_button_column.dart';
 import 'package:salute_medical/views/widgets/home_widgets/request_date_row.dart';
@@ -16,23 +18,42 @@ class RequestCard extends StatelessWidget {
   const RequestCard({
     super.key,
     this.tripDetails,
-    this.isaproved,
   });
   final TripDtls? tripDetails;
-  final bool? isaproved;
-  Color cardColor() {
-    if (isaproved == true) {
-      return Colors.blue.shade100;
-    } else if (isaproved == false) {
-      return const Color.fromARGB(255, 227, 130, 102);
+
+  Color? cardColor(context) {
+    Color? cardBgColor;
+    switch (UserRequestsCubit.get(context).selectedIndex) {
+      case 0:
+        {
+          cardBgColor = Colors.white;
+        }
+        break;
+
+      case 1:
+        {
+          cardBgColor = Colors.blue.shade200;
+        }
+        break;
+      case 2:
+        {
+          cardBgColor = const Color.fromARGB(255, 227, 130, 102);
+        }
+        break;
     }
-    return Colors.white;
+    return cardBgColor;
+    // if (RequestsButtons.selectedIndex == 0) {
+    //   return Colors.blue.shade100;
+    // } else if (widget.isaproved == false) {
+    //   return const Color.fromARGB(255, 227, 130, 102);
+    // }
+    // return Colors.white;
   }
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: cardColor(),
+      color: cardColor(context),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
