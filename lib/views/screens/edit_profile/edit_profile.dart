@@ -5,6 +5,8 @@ import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/widgets/profile_widget/edit_profile.dart';
+import 'package:salute_medical/views/widgets/register_widget/mail_section_register.dart';
+import 'package:salute_medical/views/widgets/register_widget/phone_section_register_w.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
@@ -30,20 +32,27 @@ class EditProfileScreen extends StatelessWidget {
                   const Sbox(
                     h: 15,
                   ),
-                  const CustomFormField(
-                    hintText: 'MOHAMED AHMED',
-                  ),
+                  const PhoneSectionRegisterW(),
                   const Sbox(
-                    h: 15,
+                    h: 10,
                   ),
                   const CustomFormField(
                     hintText: '625484821312',
                   ),
                   const Sbox(
+                    h: 15,
+                  ),
+                  const MailSectionRegisterW(),
+                  const CustomFormField(
+                    hintText: 'Mahmoud@gmail.com',
+                  ),
+                  const Sbox(
                     h: 20,
                   ),
                   const CustomButton(
-                    bgColor: TColor.prim,
+                    bgColor: Colors.green,
+                    textColor: Colors.black,
+                    borderColor: Colors.green,
                     radius: 50,
                     text: 'Save',
                     width: 310,

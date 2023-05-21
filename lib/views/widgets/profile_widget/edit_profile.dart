@@ -30,11 +30,10 @@ class _EditProfileState extends State<EditProfile> {
             CircleAvatar(
               radius: widget.radius,
               backgroundColor: Colors.green,
-              child: const CircleAvatar(
+              child:  CircleAvatar(
                 backgroundColor: TColor.white,
                 radius: 70,
-                backgroundImage: NetworkImage(
-                    'https://cdn.dribbble.com/users/1418633/screenshots/4936819/media/a40d3f7986e7993a0553fc5d52db8e33.png?compress=1&resize=800x600&vertical=top'),
+                backgroundImage: image == null ? null : FileImage(image!)
               ),
             ),
             widget.isEdit

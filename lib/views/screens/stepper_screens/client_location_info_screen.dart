@@ -50,11 +50,11 @@ class ClientLocInfoScreen extends StatelessWidget {
           circleColor: Colors.blue.shade900,
         ),
         const Sbox(h: 20),
-        const Row(
+         Row(
           children: [
             Expanded(
               child: Column(
-                children: [
+                children: const [
                   CustomText(
                     text: 'PickUp Time',
                     fontSize: 22,
@@ -72,7 +72,7 @@ class ClientLocInfoScreen extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                children: [
+                children: const [
                   CustomText(
                     text: 'Appointment Time',
                     fontSize: 22,
