@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salute_medical/bloc/login_cubit/login_cubit.dart';
+import 'package:salute_medical/bloc/login_cubit/login_states.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/screens/RegisterScreen/register_screen.dart';
-import 'package:salute_medical/views/screens/layout_screen/layout_screen.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
@@ -90,29 +92,48 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Sbox(h: 15),
                 const ForgotPassworldLogin(),
                 const Sbox(h: 50),
-                CustomButton(
-                  bgColor: phoneNumber != null && password != null
-                      ? Colors.blue
-                      : TColor.grey2,
-                  textColor: phoneNumber != null && password != null
-                      ? TColor.white
-                      : Colors.grey,
-                  onTap: () {
-                    // NavigationUsage.navigateTo(context, const LayoutScreen());
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      NavigationUsage.navigateTo(context, const LayoutScreen());
-                      debugPrint(phoneNumber);
-                      debugPrint(password);
+                BlocConsumer(
+                  listener: (context, states) {
+                    if (states is LoginSuccessStates) {
+                      print(states.loginModels);
+                    } else if (states is LoginErrorStates) {
+                      print(states.error);
                     }
-                    setState(() {});
                   },
-                  text: 'login',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  width: 300,
-                  radius: 40,
-                  borderColor: TColor.iconGary,
+                  builder: (context, states) {
+                    if (states is! LoginLoadingStates) {
+                      return CustomButton(
+                        bgColor: phoneNumber != null && password != null
+                            ? Colors.blue
+                            : TColor.grey2,
+                        textColor: phoneNumber != null && password != null
+                            ? TColor.white
+                            : Colors.grey,
+                        onTap: () {
+                          // NavigationUsage.navigateTo(context, const LayoutScreen());
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
+                            // NavigationUsage.navigateTo(
+                            //     context, const LayoutScreen());
+                            context
+                                .read<LoginCubit>()
+                                .login(phone: phoneNumber, password: password);
+                          }
+                          setState(() {});
+                        },
+                        text: 'login',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        width: 300,
+                        radius: 40,
+                        borderColor: TColor.iconGary,
+                      );
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                  },
                 ),
                 const Sbox(
                   h: 30,
