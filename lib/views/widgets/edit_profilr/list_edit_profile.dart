@@ -10,62 +10,8 @@ class ListEditProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CustomText(text:
-        'Account',
-          fontW: FontWeight.bold,
-        ),
-        Sbox(
-          w: 500.h,
-          h: 500.w,
-          child: ListView(
-             children:  [
-               const ListTile(
-                title: CustomText(text:
-                'CHANGE profile photo ',
-                  fontW: FontWeight.bold,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: TColor.prim,
-                ),
-              ),
-               Container(
-                height: 2.w,
-                color: TColor.grey,
-              ),
-               const ListTile(
-                title: CustomText(text:
-                'CHANGE phone number',
-                  fontW: FontWeight.bold,
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: TColor.prim,
-                ),
-              ),
-               Container(
-                height: 2.w,
-                color: TColor.grey,
-              ),
-               const ListTile(
-                 title: CustomText(text:
-                 'CHANGE phone number',
-                   fontW: FontWeight.bold,
-                 ),
-                 trailing: Icon(
-                   Icons.arrow_forward_ios_outlined,
-                   color: TColor.prim,
-                 ),
-               ),
-               Container(
-                height: 2.w,
-                color: TColor.grey,
-              ),
-            ],
-          ),
-        ),
+
       ],
     );
   }
