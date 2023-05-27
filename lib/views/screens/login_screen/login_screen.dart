@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salute_medical/bloc/login_cubit/login_cubit.dart';
 import 'package:salute_medical/bloc/login_cubit/login_states.dart';
+import 'package:salute_medical/config/globals_variable.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/helper/cache_helper.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/screens/RegisterScreen/register_screen.dart';
+import 'package:salute_medical/views/screens/layout_screen/layout_screen.dart';
 import 'package:salute_medical/views/widgets/login_widget/forgot_passworld_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/logo_section_login.dart';
 import 'package:salute_medical/views/widgets/login_widget/phone_no_login_screen.dart';
@@ -67,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   h: 20,
                 ),
                 CustomFormField(
-                  number: 9,
+                  number: 6,
                   prefix: const Icon(Icons.lock),
                   suffix: IconButton(
                     icon: const Icon(Icons.remove_red_eye),
@@ -92,12 +95,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 const Sbox(h: 15),
                 const ForgotPassworldLogin(),
                 const Sbox(h: 50),
-                BlocConsumer(
+                BlocConsumer<LoginCubit, LoginStates>(
                   listener: (context, states) {
                     if (states is LoginSuccessStates) {
-                      print(states.loginModels);
+                      debugPrint(states.loginModels.toString());
+                      token = states.loginModels!.driver!.api_token;
+                      CacheHelper.putString(
+                        'apiToken',
+                        states.loginModels!.driver!.api_token!,
+                      );
+                      NavigationUsage.navigateTo(context, const LayoutScreen());
                     } else if (states is LoginErrorStates) {
-                      print(states.error);
+                      debugPrint(states.error);
                     }
                   },
                   builder: (context, states) {
@@ -113,11 +122,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           // NavigationUsage.navigateTo(context, const LayoutScreen());
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-                            // NavigationUsage.navigateTo(
-                            //     context, const LayoutScreen());
-                            context
-                                .read<LoginCubit>()
-                                .login(phone: phoneNumber, password: password);
+                            context.read<LoginCubit>().login(
+                                phone: '+2$phoneNumber', password: password);
                           }
                           setState(() {});
                         },

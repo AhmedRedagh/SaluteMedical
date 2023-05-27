@@ -106,9 +106,9 @@ class LoadingShimmerLatestProduct extends StatelessWidget {
                       text: "",
                       padding: EdgeInsets.only(top: 6.w, bottom: 2.6.w),
                     ),
-                     Row(
+                     const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         CustomText(
                           text: "",
                           color: TColor.redAccent,

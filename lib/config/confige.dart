@@ -1,5 +1,3 @@
-
-
 class Config {
   /// base url
   static const String baseUrl = "https://salutemedtrans.com/api/";
@@ -12,4 +10,7 @@ class Config {
 
   /// profile url
   static const String editProfile = "edit-profile";
+
+  /// verification url
+  static const String verification = "verify-phone";
 }

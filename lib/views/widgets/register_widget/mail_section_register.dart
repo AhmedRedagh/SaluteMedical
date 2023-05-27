@@ -8,8 +8,8 @@ class MailSectionRegisterW extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Row(
-      children: const [
+    return  const Row(
+      children: [
         Icon(
           Icons.mail_sharp,
           color: TColor.prim,

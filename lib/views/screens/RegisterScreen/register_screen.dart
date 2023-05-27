@@ -29,6 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final formKey = GlobalKey<FormState>();
 
   Color txtBtnColor = TColor.iconGary;
+  String? email, phone, password;
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     saved: (value) {
                       if (formKey.currentState!.validate()) {
-                        context.watch<RegisterCubit>().phoneNumber = value;
+                        phone = value;
                       }
                     },
                   ),
@@ -81,20 +82,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   //Mail Section
                   const MailSectionRegisterW(),
-                  const CustomFormField(
+                  CustomFormField(
                     hintText: "please enter yor Email",
                     hintTextColor: TColor.grey,
                     inputType: TextInputType.emailAddress,
+                    key: formKey,
+                    saved: (value) {
+                      if (formKey.currentState!.validate()) {}
+                      email = value;
+                    },
                   ),
                   const Sbox(
                     h: 10,
                   ),
                   //PassWord Section
                   const PassWordSectionRegisterW(),
-                  const CustomFormField(
+                  CustomFormField(
                     hintText: "please enter yor Password",
                     hintTextColor: TColor.grey,
                     security: true,
+                    key: formKey,
+                    saved: (value) {
+                      if (formKey.currentState!.validate()) {
+                        password = password;
+                      }
+                    },
                   ),
                   const Sbox(h: 10),
                   const CustomText(
@@ -107,20 +119,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     h: 50,
                   ),
                   //RegisterButton
-                  CustomButton(
-                    onTap: () {
+                  BlocConsumer<RegisterCubit, RegisterStates>(
+                      listener: (context, state) {
+                    if (state is RegisterSuccessState) {
+                      debugPrint(state.model.toString());
                       NavigationUsage.navigateTo(
-                          context, const VerificationLoginScreen());
-                    },
-                    bgColor: TColor.grey2,
-                    textColor: Colors.grey,
-                    text: 'Register',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 22,
-                    width: 300,
-                    radius: 40,
-                    borderColor: TColor.iconGary,
-                  ),
+                          context,
+                          VerificationLoginScreen(
+                              tokenRegister: state.model!.token));
+                    } else if (state is RegisterErrorState) {
+                      debugPrint(state.error);
+                    }
+                  }, builder: (context, state) {
+                    if (state is! RegisterLoadingState) {
+                      return CustomButton(
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<RegisterCubit>().register(
+                                email: email, phone: phone, password: password);
+                          }
+                        },
+                        bgColor: TColor.grey2,
+                        textColor: Colors.grey,
+                        text: 'Register',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                        width: 300,
+                        radius: 40,
+                        borderColor: TColor.iconGary,
+                      );
+                    } else {
+                      return const CircularProgressIndicator();
+                    }
+                  }),
                   const Sbox(
                     h: 30,
                   ),

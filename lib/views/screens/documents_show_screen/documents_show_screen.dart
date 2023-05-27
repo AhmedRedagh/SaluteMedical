@@ -14,9 +14,9 @@ class DocumentsShowScreen extends StatelessWidget {
       child: SizedBox(
         width: 1.sw,
         height: 1.sh,
-        child:  SingleChildScrollView(
+        child:  const SingleChildScrollView(
           child: Column(
-            children: const [
+            children: [
               LisenceCardBuilder(
                 name: 'ID Card',
               ),

@@ -1,20 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_models.dart';
+part of 'register_models.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginModels _$LoginModelsFromJson(Map<String, dynamic> json) => LoginModels(
+RegisterModels _$RegisterModelsFromJson(Map<String, dynamic> json) =>
+    RegisterModels(
       message: json['message'] as String?,
-      driver: json['driver'] == null
-          ? null
-          : LoginDriverModels.fromJson(json['driver'] as Map<String, dynamic>),
+      token: json['token'] as String?,
     );
 
-Map<String, dynamic> _$LoginModelsToJson(LoginModels instance) =>
+Map<String, dynamic> _$RegisterModelsToJson(RegisterModels instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'driver': instance.driver,
+      'token': instance.token,
     };

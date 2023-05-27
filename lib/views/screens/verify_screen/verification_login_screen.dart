@@ -13,7 +13,11 @@ import 'package:salute_medical/views/widgets/verify_widget/verify_register_scree
 import 'package:salute_medical/views/widgets/verify_widget/verify_section_login.dart';
 
 class VerificationLoginScreen extends StatelessWidget {
-  const VerificationLoginScreen({Key? key}) : super(key: key);
+  final String? tokenRegister;
+  const VerificationLoginScreen({
+    Key? key,
+    this.tokenRegister,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +57,8 @@ class VerificationLoginScreen extends StatelessWidget {
               CustomButton(
                 bgColor: TColor.prim,
                 textColor: TColor.white,
-                onTap: () => {
-                NavigationUsage.navigateTo(context,const LayoutScreen())
-                },
+                onTap: () =>
+                    {NavigationUsage.navigateTo(context, const LayoutScreen())},
                 radius: 50,
                 borderColor: TColor.grey2,
                 text: 'Login',

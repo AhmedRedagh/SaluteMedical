@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/confige.dart';
+import 'package:salute_medical/config/globals_variable.dart';
 import 'package:salute_medical/config/network_service.dart';
 import 'package:salute_medical/data/models/login_models/login_models.dart';
 
-class LogingRepo {
+class VerificationRepo {
   final _dio = NetworkService();
 
   Future<LoginModels> repo({
     String? phone,
-    String? password,
+    String? code,
   }) async {
     try {
       final request = await _dio.post(
-        url: Config.login,
-        body: {
-          "phone": phone,
-          "password": password,
-        },
-      );
+          url: Config.verification,
+          body: {
+            "phone": phone,
+            "code": code,
+          },
+          isRegisterToken: true,
+          registerToken: token);
       print(phone);
-      print(password);
+      print(code);
       print("request ${request.data}");
       LoginModels? loginModels;
 
