@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:salute_medical/config/confige.dart';
 
 class NetworkService {
   final dio = Dio();
@@ -36,6 +37,8 @@ class NetworkService {
     Map<String, dynamic>? body,
     Map<String, dynamic>? queryParameters,
     bool isAuth = false,
+    bool isRegisterToken = false,
+    String? registerToken,
     encoding,
   }) async {
     debugPrint('body => $body');
@@ -45,14 +48,18 @@ class NetworkService {
     // headers = {'Accept-Language': 'en'};
 
     Response? response;
-    dio.options.baseUrl = "";
+    dio.options.baseUrl = Config.baseUrl;
     try {
       response = await dio.post(
         url!,
         data: body,
         queryParameters: queryParameters,
         options: Options(
-          headers: isAuth ? authHeaders : headers,
+          headers: isRegisterToken == false
+              ? isAuth
+                  ? authHeaders
+                  : headers
+              : {'Authorization': "Bearer $registerToken"},
           requestEncoder: encoding,
         ),
       );
