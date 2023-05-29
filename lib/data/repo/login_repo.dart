@@ -18,9 +18,8 @@ class LogingRepo {
           "password": password,
         },
       );
-      print(phone);
-      print(password);
-      print("request ${request.data}");
+
+      debugPrint("request ${request.data}");
       LoginModels? loginModels;
 
       if (request.statusCode == 200) {

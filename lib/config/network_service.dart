@@ -15,7 +15,7 @@ class NetworkService {
     final authHeaders = {'Authorization': "Bearer $token"};
     Response? response;
     try {
-      dio.options.baseUrl = "";
+      dio.options.baseUrl = Config.baseUrl;
       response = await dio.get(
         url!,
         options: Options(

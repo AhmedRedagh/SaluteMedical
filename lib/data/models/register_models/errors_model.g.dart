@@ -1,21 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'register_models.dart';
+part of 'errors_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-RegisterModels _$RegisterModelsFromJson(Map<String, dynamic> json) =>
-    RegisterModels(
+ErrorsModel _$ErrorsModelFromJson(Map<String, dynamic> json) => ErrorsModel(
       message: json['message'] as String?,
-      token: json['token'] as String?,
-      errors: json['errors'] as Map<String, dynamic>?,
+      errors: json['errors'] == null
+          ? null
+          : ErrorType.fromJson(json['errors'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$RegisterModelsToJson(RegisterModels instance) =>
+Map<String, dynamic> _$ErrorsModelToJson(ErrorsModel instance) =>
     <String, dynamic>{
       'message': instance.message,
       'errors': instance.errors,
-      'token': instance.token,
     };

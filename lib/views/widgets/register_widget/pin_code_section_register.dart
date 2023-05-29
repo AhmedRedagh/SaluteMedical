@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 class PinCodeRegisterW extends StatelessWidget {
-  const PinCodeRegisterW({super.key, this.btnColor = TColor.iconGary});
+  const PinCodeRegisterW({
+    super.key,
+    this.btnColor = TColor.iconGary,
+    this.phone,
+  });
+  final String? phone;
   final Color? btnColor;
+
   @override
   Widget build(BuildContext context) {
+    String? code;
     return Row(
       children: [
         Flexible(
           child: PinCodeTextField(
             appContext: context,
             length: 4,
-            onChanged: (value) {},
+            onChanged: (value) {
+              code = value;
+            },
             hintCharacter: '*',
           ),
         ),
         const SizedBox(width: 50),
         TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context
+                  .read<RegisterCubit>()
+                  .verificationRegister(phone: phone, code: code);
+            },
             child: CustomText(
               text: 'Get Code',
               fontSize: 20,
