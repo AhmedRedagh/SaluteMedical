@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:salute_medical/bloc/verification_cubit/verification_state.dart';
+import 'package:salute_medical/config/globals_variable.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/helper/cache_helper.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
@@ -54,16 +58,38 @@ class VerificationLoginScreen extends StatelessWidget {
               const Sbox(
                 h: 20,
               ),
-              CustomButton(
-                bgColor: TColor.prim,
-                textColor: TColor.white,
-                onTap: () =>
-                    {NavigationUsage.navigateTo(context, const LayoutScreen())},
-                radius: 50,
-                borderColor: TColor.grey2,
-                text: 'Login',
-                fontSize: 17,
-                width: 310,
+              BlocConsumer(
+                listener: (context, states) {
+                  if (states is VerificationSuccessStates) {
+                    debugPrint(states.verifyModels.toString());
+                    token = states.verifyModels!.driver!.api_token;
+                    CacheHelper.putString(
+                      'apiToken',
+                      states.verifyModels!.driver!.api_token!,
+                    );
+                    NavigationUsage.navigateTo(context, const LayoutScreen());
+                  } else if (states is VerificationErrorStates) {
+                    debugPrint(states.error);
+                  }
+                },
+                builder: (context, states) {
+                  if (states is! VerificationLoadingStates) {
+                    return CustomButton(
+                      bgColor: TColor.prim,
+                      textColor: TColor.white,
+                      onTap: () => {},
+                      radius: 50,
+                      borderColor: TColor.grey2,
+                      text: 'Login',
+                      fontSize: 17,
+                      width: 310,
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
               ),
               const RegisterVerifyScreen(),
             ],

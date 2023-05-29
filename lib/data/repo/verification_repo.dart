@@ -13,16 +13,16 @@ class VerificationRepo {
   }) async {
     try {
       final request = await _dio.post(
-        url: Config.verification,
-        body: {
-          "phone": phone,
-          "code": code,
-        },
-        isRegisterToken: true,
-        registerToken: token,
-      );
-
-      debugPrint("request ${request.data}");
+          url: Config.verification,
+          body: {
+            "phone": phone,
+            "code": code,
+          },
+          isRegisterToken: true,
+          registerToken: token);
+      print(phone);
+      print(code);
+      print("request ${request.data}");
       LoginModels? loginModels;
 
       if (request.statusCode == 200) {
