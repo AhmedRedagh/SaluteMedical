@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_states.dart';
+import 'package:salute_medical/config/globals_variable.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
@@ -9,7 +11,6 @@ import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/screens/login_screen/login_screen.dart';
-import 'package:salute_medical/views/screens/verify_screen/verification_login_screen.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 import 'package:salute_medical/views/widgets/register_widget/mail_section_register.dart';
 import 'package:salute_medical/views/widgets/register_widget/password_section_register.dart';
@@ -26,7 +27,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   Color txtBtnColor = TColor.iconGary;
   String? email, phone, password;
@@ -45,11 +46,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Container(
             margin: const EdgeInsets.only(top: 45, left: 15, right: 15),
             child: Form(
-              key: formKey,
+              key: _formKey,
               child: Column(
                 children: [
                   //Number Section
                   const PhoneSectionRegisterW(),
+
                   CustomFormField(
                     hintText: "please enter yor Phone Number",
                     hintTextColor: TColor.grey,
@@ -57,7 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     inputType: TextInputType.phone,
                     number: 9,
                     onChanged: (value) {
-                      if (formKey.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         txtBtnColor = Colors.blue;
                         setState(() {});
                       } else {
@@ -66,29 +68,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                     },
                     saved: (value) {
-                      if (formKey.currentState!.validate()) {
-                        phone = value;
-                      }
+                      phone = value;
                     },
                   ),
+
                   const Sbox(
                     h: 10,
                   ),
-                  //verification Code Section
-                  const VerifySectionRegisterW(),
-                  PinCodeRegisterW(btnColor: txtBtnColor),
-                  const Sbox(
-                    h: 10,
-                  ),
+
                   //Mail Section
                   const MailSectionRegisterW(),
                   CustomFormField(
                     hintText: "please enter yor Email",
                     hintTextColor: TColor.grey,
                     inputType: TextInputType.emailAddress,
-                    key: formKey,
+                    validation: 'please enter yor Email Correctly',
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                     saved: (value) {
-                      if (formKey.currentState!.validate()) {}
                       email = value;
                     },
                   ),
@@ -101,14 +99,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: "please enter yor Password",
                     hintTextColor: TColor.grey,
                     security: true,
-                    key: formKey,
-                    saved: (value) {
-                      if (formKey.currentState!.validate()) {
-                        password = password;
-                      }
+                    validation: "please enter yor Password",
+                    onChanged: (value) {
+                      password = value;
+                    },
+                    number: 7,
+                    saved: (val) {
+                      password = val;
                     },
                   ),
-                  const Sbox(h: 10),
+                  const Sbox(h: 10), //verification Code Section
+                  const VerifySectionRegisterW(),
+                  PinCodeRegisterW(
+                    btnColor: txtBtnColor,
+                    phone: phone,
+                  ),
+                  const Sbox(
+                    h: 10,
+                  ),
+
                   const CustomText(
                     height: true,
                     maxLine: 2,
@@ -123,21 +132,40 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       listener: (context, state) {
                     if (state is RegisterSuccessState) {
                       debugPrint(state.model.toString());
-                      NavigationUsage.navigateTo(
-                          context,
-                          VerificationLoginScreen(
-                              tokenRegister: state.model!.token));
+                      token = state.model!.token;
+                      NavigationUsage.navigateTo(context, const LoginScreen());
                     } else if (state is RegisterErrorState) {
-                      debugPrint(state.error);
+                      debugPrint("====================");
+                      debugPrint(' state ${state.errorsModel!['message']}');
+                      Fluttertoast.showToast(
+                          msg: state.errorsModel!['message'],
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: TColor.red24,
+                          textColor: Colors.white,
+                          fontSize: 16.0);
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     backgroundColor: TColor.red24,
+                      //     content: CustomText(
+                      //       text: state.errorsModel!['message'],
+                      //       fontSize: 15,
+                      //       fontW: FontWeight.w400,
+                      //       color: TColor.white,
+                      //     ),
+                      //   ),
+                      // );
                     }
                   }, builder: (context, state) {
                     if (state is! RegisterLoadingState) {
                       return CustomButton(
                         onTap: () {
-                          if (formKey.currentState!.validate()) {
-                            context.read<RegisterCubit>().register(
-                                email: email, phone: phone, password: password);
-                          }
+                          _formKey.currentState!.save();
+
+                          context.read<RegisterCubit>().register(
+                              email: email,
+                              phone: '+2$phone',
+                              password: password);
                         },
                         bgColor: TColor.grey2,
                         textColor: Colors.grey,

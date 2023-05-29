@@ -12,8 +12,9 @@ class RegisterSuccessState extends RegisterStates {
 }
 
 class RegisterErrorState extends RegisterStates {
-  String? error;
-  RegisterErrorState({this.error});
+  dynamic error;
+  Map<String, dynamic>? errorsModel;
+  RegisterErrorState({this.error, this.errorsModel});
 }
 
 class RegisterColorToggleState extends RegisterStates {}
