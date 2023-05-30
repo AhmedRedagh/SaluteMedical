@@ -1,3 +1,4 @@
+import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -31,6 +32,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Color txtBtnColor = TColor.iconGary;
   String? email, phone, password;
+  final codePicker = const FlCountryCodePicker();
+  String? countryCode;
+  Widget? flag;
+  @override
+  void initState() {
+    flag = Image.asset(
+      width: 20,
+      fit: BoxFit.contain,
+      'assets/flags/eg.png',
+      package: 'fl_country_code_picker',
+    );
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,25 +67,60 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   //Number Section
                   const PhoneSectionRegisterW(),
 
-                  CustomFormField(
-                    hintText: "please enter yor Phone Number",
-                    hintTextColor: TColor.grey,
-                    validation: 'Please write your phone number correctly',
-                    inputType: TextInputType.phone,
-                    number: 9,
-                    onChanged: (value) {
-                      if (_formKey.currentState!.validate()) {
-                        txtBtnColor = Colors.blue;
-                        setState(() {});
-                      } else {
-                        txtBtnColor = TColor.iconGary;
-                        setState(() {});
-                      }
-                    },
-                    saved: (value) {
-                      phone = value;
-                    },
-                  ),
+                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                    InkWell(
+                      onTap: () async {
+                        final code = await codePicker.showPicker(
+                          context: context,
+                        );
+                        setState(() {
+                          countryCode = code!.dialCode;
+
+                          flag = code.flagImage;
+                        });
+                      },
+                      child: Wrap(
+                        children: [
+                          Container(
+                              margin: const EdgeInsets.only(top: 12),
+                              height: 32,
+                              width: 32,
+                              child: flag),
+                          Container(
+                            margin: const EdgeInsets.all(10),
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                color: Colors.black),
+                            child: Text(
+                              countryCode != null ? '$countryCode' : '+20',
+                              style: const TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                        child: CustomFormField(
+                      hintText: "please enter yor Phone Number",
+                      hintTextColor: TColor.grey,
+                      validation: 'Please write your phone number correctly',
+                      inputType: TextInputType.phone,
+                      number: 9,
+                      onChanged: (value) {
+                        if (_formKey.currentState!.validate()) {
+                          txtBtnColor = Colors.blue;
+                          setState(() {});
+                        } else {
+                          txtBtnColor = TColor.iconGary;
+                          setState(() {});
+                        }
+                      },
+                      saved: (value) {
+                        phone = value;
+                      },
+                    )),
+                  ]),
 
                   const Sbox(
                     h: 10,
@@ -164,7 +214,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                           context.read<RegisterCubit>().register(
                               email: email,
-                              phone: '+2$phone',
+                              phone: countryCode != null
+                                  ? '$countryCode$phone'
+                                  : '+20$phone',
                               password: password);
                         },
                         bgColor: TColor.grey2,

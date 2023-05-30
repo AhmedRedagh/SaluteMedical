@@ -44,8 +44,7 @@ class MyApp extends StatelessWidget {
           create: (context) => LoginCubit(),
         ),
         BlocProvider<VerificationCubit>(
-            create:(context)=>VerificationCubit()
-        ),
+            create: (context) => VerificationCubit()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),

@@ -78,6 +78,7 @@ dependencies:
   json_serializable: ^6.7.0
   #  build_runner
   build_runner: ^2.4.4
+  fl_country_code_picker: ^0.0.4
 
 
   
