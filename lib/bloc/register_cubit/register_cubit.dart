@@ -36,7 +36,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
     if (response.message ==
         "Register Successfully And Must verfiy yor Account By sms code") {
     } else {
-      print(response);
+      debugPrint(response.toString());
       emit(RegisterErrorState(error: response.message));
     }
   }
@@ -55,7 +55,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
         "Register Successfully And Must verfiy yor Account By sms code") {
       emit(RegisterSuccessState(model: response));
     } else {
-      print(response);
+      debugPrint(response.toString());
       emit(RegisterErrorState(
           error: response.message, errorsModel: response.errors));
     }

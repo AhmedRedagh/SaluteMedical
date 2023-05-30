@@ -20,9 +20,9 @@ class VerificationRepo {
           },
           isRegisterToken: true,
           registerToken: token);
-      print(phone);
-      print(code);
-      print("request ${request.data}");
+      debugPrint(phone);
+      debugPrint(code);
+      debugPrint("request ${request.data}");
       LoginModels? loginModels;
 
       if (request.statusCode == 200) {

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+// ignore: depend_on_referenced_packages
 import 'package:json_annotation/json_annotation.dart';
 
 part 'error_type.g.dart';
@@ -15,6 +16,5 @@ class ErrorType extends Equatable {
   }
   Map<String, dynamic> toJson() => _$ErrorTypeToJson(this);
   @override
-  // TODO: implement props
   List<Object?> get props => [email, password];
 }
