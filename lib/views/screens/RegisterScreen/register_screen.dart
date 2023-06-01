@@ -2,9 +2,11 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_states.dart';
-import 'package:salute_medical/config/globals_variable.dart';
+import 'package:salute_medical/bloc/verification_cubit/verification_cubit.dart';
+import 'package:salute_medical/bloc/verification_cubit/verification_state.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
@@ -19,10 +21,11 @@ import 'package:salute_medical/views/widgets/register_widget/phone_section_regis
 import 'package:salute_medical/views/widgets/register_widget/verify_section_register.dart';
 import '../../widgets/register_widget/pin_code_section_register.dart';
 import '../../widgets/register_widget/sign_in_section_register_w.dart';
+// import 'package:provider/src/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
-
+  static String? code;
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }
@@ -33,8 +36,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Color txtBtnColor = TColor.iconGary;
   String? email, phone, password;
   final codePicker = const FlCountryCodePicker();
+  IconData? phoneIcon, emailIcon, passIcon;
   String? countryCode;
   Widget? flag;
+
   @override
   void initState() {
     flag = Image.asset(
@@ -67,60 +72,73 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   //Number Section
                   const PhoneSectionRegisterW(),
 
-                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                    InkWell(
-                      onTap: () async {
-                        final code = await codePicker.showPicker(
-                          context: context,
-                        );
-                        setState(() {
-                          countryCode = code!.dialCode;
-
-                          flag = code.flagImage;
-                        });
-                      },
-                      child: Wrap(
-                        children: [
-                          Container(
-                              margin: const EdgeInsets.only(top: 12),
-                              height: 32,
-                              width: 32,
-                              child: flag),
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            padding: const EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                color: Colors.black),
-                            child: Text(
-                              countryCode != null ? '$countryCode' : '+20',
-                              style: const TextStyle(color: Colors.white),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          final code = await codePicker.showPicker(
+                            context: context,
+                          );
+                          setState(() {
+                            countryCode = code!.dialCode;
+                            flag = code.flagImage;
+                          });
+                        },
+                        child: Wrap(
+                          children: [
+                            Container(
+                                margin: const EdgeInsets.only(top: 12),
+                                height: 32,
+                                width: 32,
+                                child: flag),
+                            Container(
+                              margin: const EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  color: Colors.black),
+                              child: Text(
+                                countryCode != null ? '$countryCode' : '+20',
+                                style: const TextStyle(color: Colors.white),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    Expanded(
-                        child: CustomFormField(
-                      hintText: "please enter yor Phone Number",
-                      hintTextColor: TColor.grey,
-                      validation: 'Please write your phone number correctly',
-                      inputType: TextInputType.phone,
-                      number: 9,
-                      onChanged: (value) {
-                        if (_formKey.currentState!.validate()) {
-                          txtBtnColor = Colors.blue;
-                          setState(() {});
-                        } else {
-                          txtBtnColor = TColor.iconGary;
-                          setState(() {});
-                        }
-                      },
-                      saved: (value) {
-                        phone = value;
-                      },
-                    )),
-                  ]),
+                      Expanded(
+                          child: CustomFormField(
+                        hintText: "please enter yor Phone Number",
+                        hintTextColor: TColor.grey,
+                        validation: 'Please write your phone number correctly',
+                        inputType: TextInputType.phone,
+                        number: 9,
+                        onChanged: (value) {
+                          if (value.length > 7) {
+                            setState(() {
+                              txtBtnColor = Colors.blue;
+                              phone = value;
+                              phoneIcon = Icons.check;
+                            });
+                          } else {
+                            txtBtnColor = TColor.iconGary;
+                            setState(() {
+                              phone = value;
+                              phoneIcon = Icons.close;
+                            });
+                          }
+                        },
+                        saved: (value) {
+                          phone = value;
+                        },
+                      )),
+                      Icon(
+                        phoneIcon,
+                        color:
+                            phoneIcon == Icons.close ? Colors.red : Colors.blue,
+                      )
+                    ],
+                  ),
 
                   const Sbox(
                     h: 10,
@@ -132,9 +150,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: "please enter yor Email",
                     hintTextColor: TColor.grey,
                     inputType: TextInputType.emailAddress,
+                    suffix: Icon(
+                      emailIcon,
+                      color:
+                          emailIcon == Icons.close ? Colors.red : Colors.blue,
+                    ),
                     validation: 'please enter yor Email Correctly',
                     onChanged: (value) {
-                      setState(() {});
+                      setState(() {
+                        email = value;
+                        if (isValidEmail(value)) {
+                          emailIcon = Icons.check;
+                        } else {
+                          emailIcon = Icons.close;
+                        }
+                      });
                     },
                     saved: (value) {
                       email = value;
@@ -148,21 +178,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   CustomFormField(
                     hintText: "please enter yor Password",
                     hintTextColor: TColor.grey,
+                    suffix: Icon(
+                      passIcon,
+                      color: passIcon == Icons.close ? Colors.red : Colors.blue,
+                    ),
                     security: true,
-                    validation: "please enter yor Password",
+                    validation: "please enter yor Password correctly",
                     onChanged: (value) {
-                      password = value;
+                      setState(() {
+                        password = value;
+                      });
+                      List<PasswordError> passError =
+                          PasswordCheck.passwordValidator(value);
+                      print(passError.toString());
+                      if (value.length > 8) {
+                        if (passError.isEmpty) {
+                          passIcon = Icons.check;
+                        }
+                      } else {
+                        passIcon = Icons.close;
+                      }
                     },
-                    number: 7,
+                    number: 8,
                     saved: (val) {
                       password = val;
                     },
-                  ),
-                  const Sbox(h: 10), //verification Code Section
-                  const VerifySectionRegisterW(),
-                  PinCodeRegisterW(
-                    btnColor: txtBtnColor,
-                    phone: phone,
                   ),
                   const Sbox(
                     h: 10,
@@ -174,64 +214,72 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     text:
                         '8-20 digits, At least 1 special characters 1 uppercase letter, with no continuous digits',
                   ),
+                  const Sbox(h: 10),
+                  const HorizontalLine(height: 3.5),
+
+                  const Sbox(h: 20), //verification Code Section
+                  const VerifySectionRegisterW(),
+                  PinCodeRegisterW(
+                    btnColor: txtBtnColor,
+                    phone: countryCode != null
+                        ? '$countryCode$phone'
+                        : '+20$phone',
+                    email: email,
+                    password: password,
+                  ),
+
                   const Sbox(
                     h: 50,
                   ),
                   //RegisterButton
-                  BlocConsumer<RegisterCubit, RegisterStates>(
-                      listener: (context, state) {
-                    if (state is RegisterSuccessState) {
-                      debugPrint(state.model.toString());
-                      token = state.model!.token;
-                      NavigationUsage.navigateTo(context, const LoginScreen());
-                    } else if (state is RegisterErrorState) {
-                      debugPrint("====================");
-                      debugPrint(' state ${state.errorsModel!['message']}');
-                      Fluttertoast.showToast(
-                          msg: state.errorsModel!['message'],
-                          gravity: ToastGravity.BOTTOM,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: TColor.red24,
-                          textColor: Colors.white,
-                          fontSize: 16.0);
-                      // ScaffoldMessenger.of(context).showSnackBar(
-                      //   SnackBar(
-                      //     backgroundColor: TColor.red24,
-                      //     content: CustomText(
-                      //       text: state.errorsModel!['message'],
-                      //       fontSize: 15,
-                      //       fontW: FontWeight.w400,
-                      //       color: TColor.white,
-                      //     ),
-                      //   ),
-                      // );
-                    }
-                  }, builder: (context, state) {
-                    if (state is! RegisterLoadingState) {
-                      return CustomButton(
-                        onTap: () {
-                          _formKey.currentState!.save();
 
-                          context.read<RegisterCubit>().register(
-                              email: email,
-                              phone: countryCode != null
-                                  ? '$countryCode$phone'
-                                  : '+20$phone',
-                              password: password);
-                        },
-                        bgColor: TColor.grey2,
-                        textColor: Colors.grey,
-                        text: 'Register',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22,
-                        width: 300,
-                        radius: 40,
-                        borderColor: TColor.iconGary,
-                      );
-                    } else {
-                      return const CircularProgressIndicator();
-                    }
-                  }),
+                  BlocConsumer<VerificationCubit, VerificationStates>(
+                    builder: (context, state) {
+                      if (state is! VerificationLoadingStates) {
+                        return CustomButton(
+                          onTap: () {
+                            context.read<VerificationCubit>().verify(
+                                  phone: phone,
+                                  code: Provider.of<VerificationCubit>(context,
+                                          listen: false)
+                                      .pinCode,
+                                );
+                          },
+                          bgColor: TColor.grey2,
+                          textColor: Colors.grey,
+                          text: 'Register',
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                          width: 300,
+                          radius: 40,
+                          borderColor: TColor.iconGary,
+                        );
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
+                    listener: (context, state) {
+                      if (state is VerificationSuccessStates) {
+                        NavigationUsage.navigateTo(
+                            context, const LoginScreen());
+                        Fluttertoast.showToast(
+                            msg: state.verifyModels!.message!,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: TColor.greenSuccess,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      } else if (state is VerificationErrorStates) {
+                        Fluttertoast.showToast(
+                            msg: state.error!,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: TColor.greenSuccess,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      }
+                    },
+                  ),
                   const Sbox(
                     h: 30,
                   ),

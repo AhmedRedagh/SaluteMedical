@@ -13,4 +13,10 @@ class Config {
 
   /// verification url
   static const String verification = "verify-phone";
+
+  static const String termsConditions = 'terms-conditions';
+
+  static const String privacyPolicy = 'privacy-policy';
+
+  static const String helpSupport = 'help-support';
 }

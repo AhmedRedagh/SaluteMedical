@@ -22,6 +22,7 @@ class VerificationRepo {
           registerToken: token);
       debugPrint(phone);
       debugPrint(code);
+      debugPrint(token);
       debugPrint("request ${request.data}");
       LoginModels? loginModels;
 
