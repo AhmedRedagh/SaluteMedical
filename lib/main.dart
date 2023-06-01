@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/bloc/documents_cubit/documents_cubit.dart';
+import 'package:salute_medical/bloc/help_support_cubit/help_support_cubit.dart';
 import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
 import 'package:salute_medical/bloc/login_cubit/login_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<VerificationCubit>(
             create: (context) => VerificationCubit()),
+        BlocProvider(create: (context) => HelpSupportCubit()..getHelpSupport()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),
