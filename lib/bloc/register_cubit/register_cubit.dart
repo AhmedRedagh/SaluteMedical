@@ -31,7 +31,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
       phone: phone,
       code: code,
     );
-    debugPrint('=========================5225252 ${response.message} ');
+    debugPrint('========================= ${response.message} ');
 
     if (response.message ==
         "Register Successfully And Must verfiy yor Account By sms code") {
