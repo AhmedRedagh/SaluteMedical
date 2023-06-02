@@ -19,4 +19,6 @@ class Config {
   static const String privacyPolicy = 'privacy-policy';
 
   static const String helpSupport = 'help-support';
+
+  static const String getProfile = 'get-data';
 }
