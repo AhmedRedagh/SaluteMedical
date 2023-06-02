@@ -1,12 +1,10 @@
-// ignore_for_file: depend_on_referenced_packages, non_constant_identifier_names
-
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'login_driver_models.g.dart';
+part 'get_profile_data_model.g.dart';
 
 @JsonSerializable()
-class LoginDriverModels extends Equatable {
+class GetProfileData extends Equatable {
   final String? api_token;
   final int? id;
   final Map<String, dynamic>? city;
@@ -18,8 +16,10 @@ class LoginDriverModels extends Equatable {
   final String? birthdate;
   final String? created_at;
   final String? updated_at;
+  final String? code;
+  final String? car;
 
-  const LoginDriverModels(
+  const GetProfileData({
     this.api_token,
     this.id,
     this.city,
@@ -31,26 +31,30 @@ class LoginDriverModels extends Equatable {
     this.birthdate,
     this.created_at,
     this.updated_at,
-  );
-
-  factory LoginDriverModels.fromJson(Map<String, dynamic> json) {
-    return _$LoginDriverModelsFromJson(json);
+    this.code,
+    this.car,
+  });
+  factory GetProfileData.fromJson(Map<String, dynamic> json) {
+    return _$GetProfileDataFromJson(json);
   }
-
-  Map<String, dynamic> toJson() => _$LoginDriverModelsToJson(this);
+  Map<String, dynamic> toJson() => _$GetProfileDataToJson(this);
 
   @override
   List<Object?> get props => [
-        api_token,
-        id,
-        city,
-        first_name,
-        last_name,
-        username,
-        phone,
-        email,
-        birthdate,
-        created_at,
-        updated_at,
+        {
+          api_token,
+          id,
+          city,
+          first_name,
+          last_name,
+          username,
+          phone,
+          email,
+          birthdate,
+          created_at,
+          updated_at,
+          code,
+          car,
+        }
       ];
 }

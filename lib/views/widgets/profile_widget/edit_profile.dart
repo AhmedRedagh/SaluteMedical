@@ -10,7 +10,7 @@ import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 class EditProfile extends StatefulWidget {
   final bool isEdit;
   final double? radius;
-  const EditProfile({Key? key, this.isEdit = false, this.radius = 73})
+  const EditProfile({Key? key, this.isEdit = false, this.radius = 63})
       : super(key: key);
 
   @override
@@ -30,11 +30,10 @@ class _EditProfileState extends State<EditProfile> {
             CircleAvatar(
               radius: widget.radius,
               backgroundColor: Colors.green,
-              child:  CircleAvatar(
-                backgroundColor: TColor.white,
-                radius: 70,
-                backgroundImage: image == null ? null : FileImage(image!)
-              ),
+              child: CircleAvatar(
+                  backgroundColor: TColor.white,
+                  radius: 60,
+                  backgroundImage: image == null ? null : FileImage(image!)),
             ),
             widget.isEdit
                 ? InkWell(

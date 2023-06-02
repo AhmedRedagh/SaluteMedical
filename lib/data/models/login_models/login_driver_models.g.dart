@@ -10,7 +10,7 @@ LoginDriverModels _$LoginDriverModelsFromJson(Map<String, dynamic> json) =>
     LoginDriverModels(
       json['api_token'] as String?,
       json['id'] as int?,
-      json['city'] as String?,
+      json['city'] as Map<String, dynamic>?,
       json['first_name'] as String?,
       json['last_name'] as String?,
       json['username'] as String?,
