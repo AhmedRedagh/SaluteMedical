@@ -3,14 +3,14 @@
 import 'package:equatable/equatable.dart';
 
 import 'package:json_annotation/json_annotation.dart';
-import 'package:salute_medical/data/models/help_support_model/help_support_data.dart';
+import 'package:salute_medical/data/models/privacy_policy_model/privacy_policy_data.dart';
 
 part 'privacy_policy_model.g.dart';
 
 @JsonSerializable()
 class PrivacyPolicyModel extends Equatable {
   final String? message;
-  final HelpSupportData? data;
+  final PrivacyPolicyData? data;
 
   const PrivacyPolicyModel({
     this.message,

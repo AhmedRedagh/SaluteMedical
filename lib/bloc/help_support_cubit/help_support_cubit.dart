@@ -12,7 +12,7 @@ class HelpSupportCubit extends Cubit<HelpSupportStates> {
     final response = await _getHelpSupportRepo.repo();
     debugPrint('=========================12454 ${response.data} ');
 
-    if (response.message == "Help and support  Successfully") {
+    if (response.message != "Unauthenticated") {
       emit(HelpSupportSuccessState(helpSupportModel: response));
     } else {
       debugPrint(response.toString());

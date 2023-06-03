@@ -12,7 +12,7 @@ class PrivacyPolicyCubit extends Cubit<PrivacyPolicyStates> {
     final response = await _getPrivacyPolicy.repo();
     debugPrint('=========================5225252 ${response.data} ');
 
-    if (response.message == "Edit Successfully") {
+    if (response.message != "Unauthenticated") {
       emit(PrivacyPolicySuccessState(model: response));
     } else {
       debugPrint(response.toString());

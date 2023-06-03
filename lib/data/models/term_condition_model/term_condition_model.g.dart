@@ -1,20 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'privacy_policy_model.dart';
+part of 'term_condition_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-PrivacyPolicyModel _$PrivacyPolicyModelFromJson(Map<String, dynamic> json) =>
-    PrivacyPolicyModel(
+TermConditionModel _$TermConditionModelFromJson(Map<String, dynamic> json) =>
+    TermConditionModel(
       message: json['message'] as String?,
       data: json['data'] == null
           ? null
-          : PrivacyPolicyData.fromJson(json['data'] as Map<String, dynamic>),
+          : TermConditionData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$PrivacyPolicyModelToJson(PrivacyPolicyModel instance) =>
+Map<String, dynamic> _$TermConditionModelToJson(TermConditionModel instance) =>
     <String, dynamic>{
       'message': instance.message,
       'data': instance.data,

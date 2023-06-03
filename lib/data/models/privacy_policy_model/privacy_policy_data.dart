@@ -14,7 +14,7 @@ class PrivacyPolicyData extends Equatable {
   final String? created_at;
   final String? updated_at;
 
-  PrivacyPolicyData(
+  const PrivacyPolicyData(
       this.id,
       this.name,
       this.title,

@@ -3,7 +3,6 @@ import 'package:salute_medical/config/confige.dart';
 import 'package:salute_medical/config/network_service.dart';
 import 'package:salute_medical/data/models/get_profile_model/get_profile_model.dart';
 
-import '../../config/globals_variable.dart';
 
 class GetProfileRepo {
   final _dio = NetworkService();

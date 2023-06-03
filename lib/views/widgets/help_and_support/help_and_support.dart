@@ -21,9 +21,11 @@ class HelpSupport extends StatelessWidget {
       body: SingleChildScrollView(
         child:BlocBuilder<HelpSupportCubit , HelpSupportStates>(builder: ( context, states) {
           if (states is HelpSupportLoadingState){
-            return const CircularProgressIndicator();
+            return const Center(
+                child: CircularProgressIndicator()
+            );
           }else if (states is HelpSupportSuccessState){
-            return const Padding(
+            return  const Padding(
               padding: EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,9 +54,9 @@ class HelpSupport extends StatelessWidget {
               ),
             );
           }else if (states is HelpSupportErrorState){
-            return SizedBox();
+            return const SizedBox();
           }else {
-            return SizedBox();
+            return const SizedBox();
           }
         },)
 
