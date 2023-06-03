@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   listener: (context, states) {
                     if (states is LoginSuccessStates) {
                       debugPrint(states.loginModels.toString());
-                      token = states.loginModels!.driver!.api_token;
+                      loginToken = states.loginModels!.driver!.api_token;
                       CacheHelper.putString(
                         'apiToken',
                         states.loginModels!.driver!.api_token!,

@@ -1,1 +1,3 @@
 String? token;
+
+String? loginToken;

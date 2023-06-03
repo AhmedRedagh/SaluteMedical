@@ -15,3 +15,5 @@ class VerificationErrorStates extends VerificationStates {
   final String? error;
   VerificationErrorStates({this.error});
 }
+
+class ChangeCodeState extends VerificationStates {}

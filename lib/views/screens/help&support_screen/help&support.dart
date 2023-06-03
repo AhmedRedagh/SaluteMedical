@@ -6,6 +6,6 @@ class HelpAndSupport extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HelpSupport();
+    return  const HelpSupport();
   }
 }

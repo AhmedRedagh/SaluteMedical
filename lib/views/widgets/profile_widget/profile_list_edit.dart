@@ -112,19 +112,22 @@ class SettingProfile extends StatelessWidget {
               height: 2.w,
               color: TColor.grey,
             ),
-             ListTile(
-              onTap: (){
+            ListTile(
+              onTap: () {
+
+                ///// navigation to screen
                 NavigationUsage.navigateTo(context, const HelpAndSupport());
+
               },
-              title: CustomText(
+              title: const CustomText(
                 text: 'Help & Support',
                 fontW: FontWeight.bold,
               ),
-              leading: Icon(
+              leading: const Icon(
                 Icons.message_rounded,
                 color: TColor.prim,
               ),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
                 color: TColor.prim,
               ),
