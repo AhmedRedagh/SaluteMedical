@@ -9,15 +9,15 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
   final _editProfileRepo = UpdateProfileRepo();
 
   ProfileInfo profileInfo = ProfileInfo(
-    1,
-    'A',
-    'ahmed reda',
-    'username',
-    '01009261284',
-    'ahmedreda@gmail.com',
-    '2-10-2023',
-    "password",
-    "password",
+    cityId: '1',
+    lastName: 'A',
+    firstName: 'ahmed reda',
+    username: 'username',
+    phone: '01009261284',
+    email: 'ahmedreda@gmail.com',
+    birthdate: '2-10-2023',
+    password: "password",
+    passwordConfirmed: "password",
   );
 
   Future<void> profileUpdate({

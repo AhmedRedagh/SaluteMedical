@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/confige.dart';
 
+import 'globals_variable.dart';
+
 class NetworkService {
   final dio = Dio();
 
@@ -11,8 +13,12 @@ class NetworkService {
     Map<String, dynamic>? queryParameters,
     bool isAuth = false,
   }) async {
-    const token = '';
-    final authHeaders = {'Authorization': "Bearer $token"};
+    // const token = '';
+    final authHeaders = {
+      'Authorization': "Bearer $loginToken",
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    };
     Response? response;
     try {
       dio.options.baseUrl = Config.baseUrl;
@@ -43,7 +49,7 @@ class NetworkService {
   }) async {
     debugPrint('body => $body');
     const token = '';
-    final authHeaders = {'Authorization': "Bearer $token"};
+    final authHeaders = {'Authorization': "Bearer $loginToken"};
 
     // headers = {'Accept-Language': 'en'};
 
@@ -81,7 +87,7 @@ class NetworkService {
   }) async {
     debugPrint('body => $body');
     const token = '';
-    final authHeaders = {'Authorization': "Bearer $token"};
+    final authHeaders = {'Authorization': "Bearer $loginToken"};
 
     // headers = {'Accept-Language': 'en'};
 
@@ -115,7 +121,7 @@ class NetworkService {
   }) async {
     debugPrint('body => $body');
     const token = '';
-    final authHeaders = {'Authorization': "Bearer $token"};
+    final authHeaders = {'Authorization': "Bearer $loginToken"};
     // headers = {'Accept-Language': 'en'};
     Response? response;
     dio.options.baseUrl = "";

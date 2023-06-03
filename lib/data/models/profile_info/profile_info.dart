@@ -1,16 +1,16 @@
 class ProfileInfo {
-  final int? cityId;
-  final String? firstName;
-  final String? lastName;
-  final String? username;
-  final String? phone;
-  final String? email;
-  final String? birthdate;
-  final String? password;
-  final String? passwordConfirmed;
+  String? cityId;
+  String? firstName;
+  String? lastName;
+  String? username;
+  String? phone;
+  String? email;
+  String? birthdate;
+  String? password;
+  String? passwordConfirmed;
 
   ProfileInfo(
-      this.cityId,
+      {this.cityId,
       this.firstName,
       this.lastName,
       this.username,
@@ -18,5 +18,41 @@ class ProfileInfo {
       this.email,
       this.birthdate,
       this.password,
-      this.passwordConfirmed);
+      this.passwordConfirmed});
+
+  set setCity(String id) {
+    cityId = id;
+  }
+
+  set setFirstName(String name) {
+    cityId = name;
+  }
+
+  set setLastName(String lname) {
+    lastName = lname;
+  }
+
+  set setUserName(String userNm) {
+    username = userNm;
+  }
+
+  set setPhone(String phn) {
+    phone = phn;
+  }
+
+  set setEmail(String email) {
+    this.email = email;
+  }
+
+  set setBirthDate(String birthDate) {
+    birthdate = birthDate;
+  }
+
+  set setPassword(String password) {
+    this.password = password;
+  }
+
+  set setconfirmedPass(String confirmedPass) {
+    passwordConfirmed = passwordConfirmed;
+  }
 }
