@@ -14,11 +14,18 @@ class Config {
   /// verification url
   static const String verification = "verify-phone";
 
+  /// Terms&Condition url
   static const String termsConditions = 'terms-conditions';
 
+  /// Privacy&Policy url
   static const String privacyPolicy = 'privacy-policy';
 
+  /// Help&Support url
   static const String helpSupport = 'help-support';
 
+  /// Get Data url
   static const String getProfile = 'get-data';
+
+  /// Get All Orders url
+  static const String getOrders = 'orders';
 }

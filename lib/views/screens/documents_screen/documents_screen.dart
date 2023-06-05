@@ -63,7 +63,7 @@ class DocumentsScreen extends StatelessWidget {
                   },
                 ),
                 const Sbox(
-                  h: 10,
+                  h: 3,
                 ),
                 const Spacer(),
                 Container(

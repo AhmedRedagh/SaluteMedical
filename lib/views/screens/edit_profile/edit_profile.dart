@@ -144,15 +144,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           fontSize: 17,
                           onTap: () {
                             _formKey.currentState!.save();
-                            print('email ${edittedProfile!.email}');
+                            debugPrint('email ${edittedProfile!.email}');
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               context.read<EditProfileCubit>().profileUpdate(
                                   updatedProfile: edittedProfile);
-                              print(edittedProfile!.email);
+                              debugPrint(edittedProfile!.email);
                             }
                             context.read<EditProfileCubit>().profileUpdate();
-                            print(edittedProfile!.email);
+                            debugPrint(edittedProfile!.email);
                           },
                         );
                       } else {

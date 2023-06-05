@@ -1,8 +1,7 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_states.dart';
 import 'package:salute_medical/bloc/verification_cubit/verification_cubit.dart';
@@ -19,8 +18,10 @@ import 'package:salute_medical/views/widgets/register_widget/mail_section_regist
 import 'package:salute_medical/views/widgets/register_widget/password_section_register.dart';
 import 'package:salute_medical/views/widgets/register_widget/phone_section_register_w.dart';
 import 'package:salute_medical/views/widgets/register_widget/verify_section_register.dart';
+
 import '../../widgets/register_widget/pin_code_section_register.dart';
 import '../../widgets/register_widget/sign_in_section_register_w.dart';
+import '../documents_screen/documents_screen.dart';
 // import 'package:provider/src/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -71,7 +72,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 children: [
                   //Number Section
                   const PhoneSectionRegisterW(),
-
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -136,20 +136,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         phoneIcon,
                         color:
                             phoneIcon == Icons.close ? Colors.red : Colors.blue,
-                      )
+                      ),
                     ],
                   ),
 
                   const Sbox(
                     h: 10,
                   ),
-
                   //Mail Section
                   const MailSectionRegisterW(),
                   CustomFormField(
                     hintText: "please enter yor Email",
                     hintTextColor: TColor.grey,
                     inputType: TextInputType.emailAddress,
+                    number: 4,
                     suffix: Icon(
                       emailIcon,
                       color:
@@ -159,6 +159,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onChanged: (value) {
                       setState(() {
                         email = value;
+
                         if (isValidEmail(value)) {
                           emailIcon = Icons.check;
                         } else {
@@ -166,31 +167,48 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         }
                       });
                     },
-                    saved: (value) {
-                      email = value;
-                    },
                   ),
                   const Sbox(
                     h: 10,
                   ),
                   //PassWord Section
                   const PassWordSectionRegisterW(),
-                  CustomFormField(
-                    hintText: "please enter yor Password",
-                    hintTextColor: TColor.grey,
-                    suffix: Icon(
-                      passIcon,
-                      color: passIcon == Icons.close ? Colors.red : Colors.blue,
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "please enter yor Password",
+                      hintStyle: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        fontSize: 16.0.sp,
+                        color: Colors.grey,
+                      ),
+                      suffix: Icon(
+                        passIcon,
+                        color:
+                            passIcon == Icons.close ? Colors.red : Colors.blue,
+                      ),
                     ),
-                    security: true,
-                    validation: "please enter yor Password correctly",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    obscureText: true,
+                    validator: (password) {
+                      if (password != null) {
+                        // Get all errors
+                        final validators =
+                            PasswordCheck.passwordValidator(password);
+                        if (validators.isEmpty) return null;
+                        return validators
+                            .map((e) => '- ${e.message}')
+                            .join('\n');
+                      }
+
+                      return null;
+                    },
                     onChanged: (value) {
                       setState(() {
                         password = value;
                       });
                       List<PasswordError> passError =
                           PasswordCheck.passwordValidator(value);
-                      print(passError.toString());
+                      debugPrint(passError.toString());
                       if (value.length > 8) {
                         if (passError.isEmpty) {
                           passIcon = Icons.check;
@@ -199,8 +217,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         passIcon = Icons.close;
                       }
                     },
-                    number: 8,
-                    saved: (val) {
+                    onSaved: (val) {
                       password = val;
                     },
                   ),
@@ -238,12 +255,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       if (state is! VerificationLoadingStates) {
                         return CustomButton(
                           onTap: () {
-                            context.read<VerificationCubit>().verify(
-                                  phone: phone,
-                                  code: Provider.of<VerificationCubit>(context,
-                                          listen: false)
-                                      .pinCode,
-                                );
+                            NavigationUsage.navigateTo(
+                                context, const DocumentsScreen());
+                            // context.read<VerificationCubit>().verify(
+                            //       phone: phone,
+                            //       code: Provider.of<VerificationCubit>(context,
+                            //               listen: false)
+                            //           .pinCode,
+                            //     );
                           },
                           bgColor: TColor.grey2,
                           textColor: Colors.grey,
@@ -259,25 +278,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                     },
                     listener: (context, state) {
-                      if (state is VerificationSuccessStates) {
-                        NavigationUsage.navigateTo(
-                            context, const LoginScreen());
-                        Fluttertoast.showToast(
-                            msg: state.verifyModels!.message!,
-                            gravity: ToastGravity.BOTTOM,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: TColor.greenSuccess,
-                            textColor: Colors.white,
-                            fontSize: 16.0);
-                      } else if (state is VerificationErrorStates) {
-                        Fluttertoast.showToast(
-                            msg: state.error!,
-                            gravity: ToastGravity.BOTTOM,
-                            timeInSecForIosWeb: 1,
-                            backgroundColor: TColor.greenSuccess,
-                            textColor: Colors.white,
-                            fontSize: 16.0);
-                      }
+                      // if (state is VerificationSuccessStates) {
+                      //   NavigationUsage.navigateTo(
+                      //       context, const LoginScreen());
+                      //   Fluttertoast.showToast(
+                      //       msg: state.verifyModels!.message!,
+                      //       gravity: ToastGravity.BOTTOM,
+                      //       timeInSecForIosWeb: 1,
+                      //       backgroundColor: TColor.greenSuccess,
+                      //       textColor: Colors.white,
+                      //       fontSize: 16.0);
+                      // } else if (state is VerificationErrorStates) {
+                      //   Fluttertoast.showToast(
+                      //       msg: state.error!,
+                      //       gravity: ToastGravity.BOTTOM,
+                      //       timeInSecForIosWeb: 1,
+                      //       backgroundColor: TColor.greenSuccess,
+                      //       textColor: Colors.white,
+                      //       fontSize: 16.0);
+                      // }
                     },
                   ),
                   const Sbox(
@@ -289,7 +308,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onTap: () {
                       NavigationUsage.navigateTo(context, const LoginScreen());
                     },
-                  )
+                  ),
                 ],
               ),
             ),

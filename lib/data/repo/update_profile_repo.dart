@@ -12,7 +12,7 @@ class UpdateProfileRepo {
     ProfileInfo? updatedProfile,
   }) async {
     try {
-      print(updatedProfile);
+      debugPrint(updatedProfile.toString());
       final request = await _dio.post(url: Config.editProfile, body: {
         'city_id': updatedProfile!.cityId,
         'first_name': updatedProfile.firstName,

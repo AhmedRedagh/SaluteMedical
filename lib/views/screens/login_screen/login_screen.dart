@@ -119,13 +119,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ? TColor.white
                             : Colors.grey,
                         onTap: () {
-                          // NavigationUsage.navigateTo(context, const LayoutScreen());
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
-                            context.read<LoginCubit>().login(
-                                phone: '+2$phoneNumber', password: password);
-                          }
-                          setState(() {});
+                          NavigationUsage.navigateTo(
+                              context, const LayoutScreen());
+                          // if (_formKey.currentState!.validate()) {
+                          //   _formKey.currentState!.save();
+                          //   context.read<LoginCubit>().login(
+                          //       phone: '+2$phoneNumber', password: password);
+                          // }
+                          // setState(() {});
                         },
                         text: 'login',
                         fontWeight: FontWeight.bold,

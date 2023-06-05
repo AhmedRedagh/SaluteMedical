@@ -54,9 +54,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<EditProfileCubit>(
           create: (context) => EditProfileCubit(),
         ),
-        BlocProvider<GetProfileCubit>(
-          create: (context) => GetProfileCubit()..getProfile(),
-        ),
+        BlocProvider<GetProfileCubit>(create: (context) => GetProfileCubit()
+            // ..getProfile(),
+            ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),

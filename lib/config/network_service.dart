@@ -48,7 +48,6 @@ class NetworkService {
     encoding,
   }) async {
     debugPrint('body => $body');
-    const token = '';
     final authHeaders = {'Authorization': "Bearer $loginToken"};
 
     // headers = {'Accept-Language': 'en'};
@@ -86,7 +85,7 @@ class NetworkService {
     encoding,
   }) async {
     debugPrint('body => $body');
-    const token = '';
+
     final authHeaders = {'Authorization': "Bearer $loginToken"};
 
     // headers = {'Accept-Language': 'en'};
@@ -120,7 +119,7 @@ class NetworkService {
     encoding,
   }) async {
     debugPrint('body => $body');
-    const token = '';
+
     final authHeaders = {'Authorization': "Bearer $loginToken"};
     // headers = {'Accept-Language': 'en'};
     Response? response;

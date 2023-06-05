@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_this
+// ignore_for_file: unnecessary_this, non_constant_identifier_names, depend_on_referenced_packages
 
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -14,7 +14,7 @@ class HelpSupportData extends Equatable {
   final String? created_at;
   final String? updated_at;
 
-  HelpSupportData(
+  const HelpSupportData(
     this.id,
     this.name,
     this.title,

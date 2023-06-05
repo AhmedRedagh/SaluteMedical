@@ -76,6 +76,7 @@ class CustomFormField extends StatelessWidget {
           ),
         ),
       ),
+      autovalidateMode: AutovalidateMode.onUserInteraction,
     );
   }
 }

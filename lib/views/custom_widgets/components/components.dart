@@ -57,6 +57,7 @@ enum PasswordError {
   upperCase('Must contain at least one uppercase'),
   lowerCase('Must contain at least one lowercase'),
   digit('Must contain at least one digit'),
+  eigthCharacter('Must be at least 8 characters in length'),
   specialCharacter('Contain at least one special character: !@#\\\$&*~');
 
   final String message;
@@ -75,6 +76,9 @@ class PasswordCheck {
     }
     if (!RegExp(r'[0-9]').hasMatch(password)) {
       errors.add(PasswordError.digit);
+    }
+    if (!RegExp(r'.{8,}').hasMatch(password)) {
+      errors.add(PasswordError.eigthCharacter);
     }
     if (!RegExp(r'[!@#\$&*~]').hasMatch(password)) {
       errors.add(PasswordError.specialCharacter);

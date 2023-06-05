@@ -1,5 +1,6 @@
-import 'package:equatable/equatable.dart';
+// ignore_for_file: depend_on_referenced_packages
 
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'get_profile_data_model.dart';
