@@ -7,12 +7,15 @@ class HelpSupportCubit extends Cubit<HelpSupportStates> {
   HelpSupportCubit() : super(HelpSupportIntialState());
   final _getHelpSupportRepo = HelpSupportRepo();
 
+  String? title;
+
   Future<void> getHelpSupport() async {
     emit(HelpSupportLoadingState());
     final response = await _getHelpSupportRepo.repo();
     debugPrint('=========================12454 ${response.data} ');
 
     if (response.message != "Unauthenticated") {
+      title = response.data!.title;
       emit(HelpSupportSuccessState(helpSupportModel: response));
     } else {
       debugPrint(response.toString());

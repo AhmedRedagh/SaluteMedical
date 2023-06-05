@@ -10,6 +10,7 @@ class HelpSupportRepo {
     try {
       final request = await _dio.get(
         url: Config.helpSupport,
+        isAuth: true,
       );
 
       debugPrint("request ${request.data}-------------");

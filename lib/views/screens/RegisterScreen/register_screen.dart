@@ -2,6 +2,8 @@ import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:provider/provider.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_states.dart';
 import 'package:salute_medical/bloc/verification_cubit/verification_cubit.dart';
@@ -21,7 +23,6 @@ import 'package:salute_medical/views/widgets/register_widget/verify_section_regi
 
 import '../../widgets/register_widget/pin_code_section_register.dart';
 import '../../widgets/register_widget/sign_in_section_register_w.dart';
-import '../documents_screen/documents_screen.dart';
 // import 'package:provider/src/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -255,14 +256,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       if (state is! VerificationLoadingStates) {
                         return CustomButton(
                           onTap: () {
-                            NavigationUsage.navigateTo(
-                                context, const DocumentsScreen());
-                            // context.read<VerificationCubit>().verify(
-                            //       phone: phone,
-                            //       code: Provider.of<VerificationCubit>(context,
-                            //               listen: false)
-                            //           .pinCode,
-                            //     );
+                            context.read<VerificationCubit>().verify(
+                                  phone: phone,
+                                  code: Provider.of<VerificationCubit>(context,
+                                          listen: false)
+                                      .pinCode,
+                                );
                           },
                           bgColor: TColor.grey2,
                           textColor: Colors.grey,
@@ -278,25 +277,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       }
                     },
                     listener: (context, state) {
-                      // if (state is VerificationSuccessStates) {
-                      //   NavigationUsage.navigateTo(
-                      //       context, const LoginScreen());
-                      //   Fluttertoast.showToast(
-                      //       msg: state.verifyModels!.message!,
-                      //       gravity: ToastGravity.BOTTOM,
-                      //       timeInSecForIosWeb: 1,
-                      //       backgroundColor: TColor.greenSuccess,
-                      //       textColor: Colors.white,
-                      //       fontSize: 16.0);
-                      // } else if (state is VerificationErrorStates) {
-                      //   Fluttertoast.showToast(
-                      //       msg: state.error!,
-                      //       gravity: ToastGravity.BOTTOM,
-                      //       timeInSecForIosWeb: 1,
-                      //       backgroundColor: TColor.greenSuccess,
-                      //       textColor: Colors.white,
-                      //       fontSize: 16.0);
-                      // }
+                      if (state is VerificationSuccessStates) {
+                        NavigationUsage.navigateTo(
+                            context, const LoginScreen());
+                        Fluttertoast.showToast(
+                            msg: state.verifyModels!.message!,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: TColor.greenSuccess,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      } else if (state is VerificationErrorStates) {
+                        Fluttertoast.showToast(
+                            msg: state.error!,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: TColor.greenSuccess,
+                            textColor: Colors.white,
+                            fontSize: 16.0);
+                      }
                     },
                   ),
                   const Sbox(
@@ -308,7 +307,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     onTap: () {
                       NavigationUsage.navigateTo(context, const LoginScreen());
                     },
-                  ),
+                  )
                 ],
               ),
             ),

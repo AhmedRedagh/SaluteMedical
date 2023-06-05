@@ -15,31 +15,31 @@ class HelpSupport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarW(name: ""),
+      appBar: appBarW(name: context.watch<HelpSupportCubit>().title),
       body: SingleChildScrollView(
           child: BlocBuilder<HelpSupportCubit, HelpSupportStates>(
         builder: (context, states) {
           if (states is HelpSupportLoadingState) {
             return const Center(child: CircularProgressIndicator());
           } else if (states is HelpSupportSuccessState) {
-            return const Padding(
-              padding: EdgeInsets.all(20.0),
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Sbox(
+                  const Sbox(
                     h: 10,
                   ),
                   CustomText(
-                    text: "",
+                    text: states.helpSupportModel!.data!.title,
                     fontSize: 30,
                     fontW: FontWeight.w900,
                   ),
-                  Sbox(
+                  const Sbox(
                     h: 50,
                   ),
                   CustomText(
-                    text: "",
+                    text: states.helpSupportModel!.data!.title,
                     maxLine: 50,
                     fontW: FontWeight.bold,
                     fontSize: 20,
