@@ -12,9 +12,8 @@ class HelpSupportRepo {
         url: Config.helpSupport,
       );
 
-      debugPrint("request ${request.data}");
+      debugPrint("request ${request.data}-------------");
       HelpSupportModel? helpSupportModel;
-
       if (request.statusCode == 200) {
         helpSupportModel = HelpSupportModel.fromJson(request.data);
       } else {

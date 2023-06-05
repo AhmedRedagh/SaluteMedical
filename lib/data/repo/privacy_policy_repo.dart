@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:salute_medical/config/confige.dart';
 import 'package:salute_medical/config/network_service.dart';

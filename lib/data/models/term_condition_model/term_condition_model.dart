@@ -1,17 +1,15 @@
-
-
-
+// ignore_for_file: depend_on_referenced_packages
 
 import 'package:equatable/equatable.dart';
-import 'package:salute_medical/data/models/term_condition_model/term_condition_data.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:salute_medical/data/models/term_condition_model/term_condition_data.dart';
 
 part 'term_condition_model.g.dart';
 
 @JsonSerializable()
 class TermConditionModel extends Equatable {
   final String? message;
-  final TermConditionData? data ;
+  final TermConditionData? data;
 
   const TermConditionModel({
     this.message,
@@ -26,9 +24,6 @@ class TermConditionModel extends Equatable {
 
   @override
   List<Object?> get props => [
-    {
-      message,
-      data
-    }
-  ];
+        {message, data}
+      ];
 }

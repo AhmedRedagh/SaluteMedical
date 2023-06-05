@@ -8,24 +8,21 @@ import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 
 class HelpSupport extends StatelessWidget {
-  final String? name ;
+  final String? name;
 
   const HelpSupport({Key? key, this.name}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarW(
-        name: ""
-      ),
+      appBar: appBarW(name: ""),
       body: SingleChildScrollView(
-        child:BlocBuilder<HelpSupportCubit , HelpSupportStates>(builder: ( context, states) {
-          if (states is HelpSupportLoadingState){
-            return const Center(
-                child: CircularProgressIndicator()
-            );
-          }else if (states is HelpSupportSuccessState){
-            return  const Padding(
+          child: BlocBuilder<HelpSupportCubit, HelpSupportStates>(
+        builder: (context, states) {
+          if (states is HelpSupportLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (states is HelpSupportSuccessState) {
+            return const Padding(
               padding: EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +31,7 @@ class HelpSupport extends StatelessWidget {
                     h: 10,
                   ),
                   CustomText(
-                    text:"",
+                    text: "",
                     fontSize: 30,
                     fontW: FontWeight.w900,
                   ),
@@ -43,7 +40,6 @@ class HelpSupport extends StatelessWidget {
                   ),
                   CustomText(
                     text: "",
-
                     maxLine: 50,
                     fontW: FontWeight.bold,
                     fontSize: 20,
@@ -53,15 +49,13 @@ class HelpSupport extends StatelessWidget {
                 ],
               ),
             );
-          }else if (states is HelpSupportErrorState){
+          } else if (states is HelpSupportErrorState) {
             return const SizedBox();
-          }else {
+          } else {
             return const SizedBox();
           }
-        },)
-
-      ),
+        },
+      )),
     );
-
   }
 }

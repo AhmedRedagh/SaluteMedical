@@ -13,7 +13,6 @@ import 'package:salute_medical/bloc/trip_cubit/trip_cubit.dart';
 import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
 import 'package:salute_medical/bloc/verification_cubit/verification_cubit.dart';
 import 'package:salute_medical/views/screens/splash_screen/splash_screen.dart';
-import 'package:salute_medical/views/widgets/help_and_support/help_and_support.dart';
 
 void main() {
   runApp(
@@ -55,9 +54,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<EditProfileCubit>(
           create: (context) => EditProfileCubit(),
         ),
-        BlocProvider<GetProfileCubit>(create: (context) => GetProfileCubit()
-            // ..getProfile(),
-            ),
+        BlocProvider<GetProfileCubit>(
+          create: (context) => GetProfileCubit()..getProfile(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(428, 926),
@@ -71,7 +70,7 @@ class MyApp extends StatelessWidget {
                     systemOverlayStyle: SystemUiOverlayStyle(
                         statusBarColor: Colors.white,
                         statusBarIconBrightness: Brightness.dark))),
-            home: const HelpSupport(),
+            home: const SplashScreen(),
           );
         },
       ),
