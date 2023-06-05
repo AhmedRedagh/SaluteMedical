@@ -6,6 +6,7 @@ import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/screens/documents_show_screen/documents_show_screen.dart';
 import 'package:salute_medical/views/screens/edit_profile/edit_profile.dart';
+import 'package:salute_medical/views/screens/help&support_screen/help&support.dart';
 import 'package:salute_medical/views/screens/transaction_screen/transaction_screen.dart';
 
 class SettingProfile extends StatelessWidget {
@@ -113,8 +114,10 @@ class SettingProfile extends StatelessWidget {
             ),
             ListTile(
               onTap: () {
-                ///
+
                 ///// navigation to screen
+                NavigationUsage.navigateTo(context, const HelpAndSupport());
+
               },
               title: const CustomText(
                 text: 'Help & Support',

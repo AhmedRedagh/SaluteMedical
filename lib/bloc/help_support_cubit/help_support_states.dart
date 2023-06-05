@@ -7,9 +7,9 @@ class HelpSupportIntialState extends HelpSupportStates {}
 class HelpSupportLoadingState extends HelpSupportStates {}
 
 class HelpSupportSuccessState extends HelpSupportStates {
-  final HelpSupportModel? model;
+  final HelpSupportModel? helpSupportModel;
 
-  HelpSupportSuccessState({this.model});
+  HelpSupportSuccessState({this.helpSupportModel});
 }
 
 class HelpSupportErrorState extends HelpSupportStates {

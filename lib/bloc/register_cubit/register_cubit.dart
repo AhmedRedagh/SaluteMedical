@@ -20,6 +20,7 @@ class RegisterCubit extends Cubit<RegisterStates> {
   //   emit(RegisterColorToggleState());
   // }
 
+
   Future<void> register({
     String? phone,
     String? password,

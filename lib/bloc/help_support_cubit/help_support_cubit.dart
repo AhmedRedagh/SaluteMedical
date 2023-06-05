@@ -10,10 +10,10 @@ class HelpSupportCubit extends Cubit<HelpSupportStates> {
   Future<void> getHelpSupport() async {
     emit(HelpSupportLoadingState());
     final response = await _getHelpSupportRepo.repo();
-    debugPrint('=========================5225252 ${response.data} ');
+    debugPrint('=========================12454 ${response.data} ');
 
-    if (response.message == "Edit Successfully") {
-      emit(HelpSupportSuccessState(model: response));
+    if (response.message != "Unauthenticated") {
+      emit(HelpSupportSuccessState(helpSupportModel: response));
     } else {
       debugPrint(response.toString());
       emit(HelpSupportErrorState(error: response.message));
