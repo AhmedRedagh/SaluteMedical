@@ -114,7 +114,6 @@ class SettingProfile extends StatelessWidget {
             ),
             ListTile(
               onTap: () {
-
                 ///// navigation to screen
                 NavigationUsage.navigateTo(context, const HelpAndSupport());
 
