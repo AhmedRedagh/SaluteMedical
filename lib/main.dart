@@ -8,7 +8,9 @@ import 'package:salute_medical/bloc/get_profile_cubit/get_profile_cubit.dart';
 import 'package:salute_medical/bloc/help_support_cubit/help_support_cubit.dart';
 import 'package:salute_medical/bloc/layout_cubit/layout_cubit.dart';
 import 'package:salute_medical/bloc/login_cubit/login_cubit.dart';
+import 'package:salute_medical/bloc/privacy_policy_cubit/privacy_policy_cubit.dart';
 import 'package:salute_medical/bloc/register_cubit/register_cubit.dart';
+import 'package:salute_medical/bloc/term_condition_cubit/term_condition_cubit.dart';
 import 'package:salute_medical/bloc/trip_cubit/trip_cubit.dart';
 import 'package:salute_medical/bloc/user_requests_bloc/user_requests_cubit.dart';
 import 'package:salute_medical/bloc/verification_cubit/verification_cubit.dart';
@@ -56,6 +58,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<GetProfileCubit>(
           create: (context) => GetProfileCubit()..getProfile(),
+        ),
+        BlocProvider<PrivacyPolicyCubit>(
+          create: (context) => PrivacyPolicyCubit()..privacyPolicy(),
+        ),
+        BlocProvider<TermConditionCubit>(
+          create: (context) => TermConditionCubit()..termCondition(),
         ),
       ],
       child: ScreenUtilInit(

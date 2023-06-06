@@ -10,8 +10,8 @@ class NotifyItemBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return   Row(
-      children: const [
+    return   const Row(
+      children: [
         CircleAvatar(
           radius: 20.0,
           backgroundColor: TColor.prim,

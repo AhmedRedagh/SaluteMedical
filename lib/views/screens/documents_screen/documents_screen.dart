@@ -67,7 +67,7 @@ class DocumentsScreen extends StatelessWidget {
                 ),
                 const Spacer(),
                 Container(
-                  margin: const EdgeInsets.only(bottom: 20),
+                  margin: const EdgeInsets.only(bottom: 40),
                   child: CustomButton(
                     bgColor: TColor.prim,
                     textColor: Colors.white,

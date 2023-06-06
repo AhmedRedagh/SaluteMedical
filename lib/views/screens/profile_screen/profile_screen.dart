@@ -30,7 +30,9 @@ class ProfileScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  EditProfile(),
+                  EditProfile(
+                    profileModel: state.model,
+                  ),
                   const Sbox(
                     h: 20,
                   ),
@@ -41,7 +43,9 @@ class ProfileScreen extends StatelessWidget {
                   const Sbox(
                     h: 20,
                   ),
-                  const SettingProfile()
+                  SettingProfile(
+                    profileModels: state.model,
+                  )
                 ],
               ),
             ),

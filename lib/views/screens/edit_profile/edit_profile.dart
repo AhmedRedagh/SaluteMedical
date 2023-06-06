@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:salute_medical/bloc/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:salute_medical/bloc/edit_profile_cubit/edit_profile_states.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/data/models/get_profile_model/get_profile_model.dart';
 import 'package:salute_medical/data/models/profile_info/profile_info.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
@@ -11,7 +12,8 @@ import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/widgets/profile_widget/edit_profile.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  const EditProfileScreen({Key? key}) : super(key: key);
+  final GetProfileModel? profileModel;
+  const EditProfileScreen({Key? key, this.profileModel}) : super(key: key);
 
   @override
   State<EditProfileScreen> createState() => _EditProfileScreenState();
@@ -32,7 +34,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const EditProfile(isEdit: true),
+                  EditProfile(isEdit: true, profileModel: widget.profileModel),
                   CustomFormField(
                     prefix: const Icon(Icons.location_city),
                     hintText: "City ID ",
@@ -145,6 +147,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           onTap: () {
                             _formKey.currentState!.save();
                             debugPrint('email ${edittedProfile!.email}');
+
                             if (_formKey.currentState!.validate()) {
                               _formKey.currentState!.save();
                               context.read<EditProfileCubit>().profileUpdate(

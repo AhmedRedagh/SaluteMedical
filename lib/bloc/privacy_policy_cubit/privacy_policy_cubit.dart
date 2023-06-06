@@ -4,6 +4,7 @@ import 'package:salute_medical/bloc/privacy_policy_cubit/privacy_policy_states.d
 import 'package:salute_medical/data/repo/privacy_policy_repo.dart';
 
 class PrivacyPolicyCubit extends Cubit<PrivacyPolicyStates> {
+  String? title;
   PrivacyPolicyCubit() : super(PrivacyPolicyLoadingState());
   final _getPrivacyPolicy = PrivacyPolicyRepo();
 
@@ -13,6 +14,7 @@ class PrivacyPolicyCubit extends Cubit<PrivacyPolicyStates> {
     debugPrint('=========================5225252 ${response.data} ');
 
     if (response.message != "Unauthenticated") {
+      title = response.data!.title;
       emit(PrivacyPolicySuccessState(model: response));
     } else {
       debugPrint(response.toString());

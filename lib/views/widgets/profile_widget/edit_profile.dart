@@ -4,14 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/data/models/get_profile_model/get_profile_model.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 
 class EditProfile extends StatefulWidget {
   final bool isEdit;
   final double? radius;
-  const EditProfile({Key? key, this.isEdit = false, this.radius = 63})
-      : super(key: key);
+  final GetProfileModel? profileModel;
+  const EditProfile({
+    Key? key,
+    this.isEdit = false,
+    this.radius = 63,
+    this.profileModel,
+  }) : super(key: key);
 
   @override
   State<EditProfile> createState() => _EditProfileState();
@@ -30,10 +36,15 @@ class _EditProfileState extends State<EditProfile> {
             CircleAvatar(
               radius: widget.radius,
               backgroundColor: Colors.green,
-              child: CircleAvatar(
-                  backgroundColor: TColor.white,
-                  radius: 60,
-                  backgroundImage: image == null ? null : FileImage(image!)),
+              child: image == null
+                  ? const CircleAvatar(
+                      backgroundColor: TColor.white,
+                      radius: 60,
+                      backgroundImage: NetworkImage(""))
+                  : CircleAvatar(
+                      backgroundColor: TColor.white,
+                      radius: 60,
+                      backgroundImage: FileImage(image!)),
             ),
             widget.isEdit
                 ? InkWell(
@@ -49,16 +60,16 @@ class _EditProfileState extends State<EditProfile> {
         const Sbox(
           h: 15,
         ),
-        const CustomText(
-          text: 'MOHAMED AHMED',
+        CustomText(
+          text: widget.profileModel!.data!.username ?? "",
           fontSize: 20,
           fontW: FontWeight.bold,
         ),
         const Sbox(
           h: 15,
         ),
-        const CustomText(
-          text: '625484821312',
+        CustomText(
+          text: widget.profileModel!.data!.phone ?? "",
           fontSize: 20,
           fontW: FontWeight.bold,
         ),

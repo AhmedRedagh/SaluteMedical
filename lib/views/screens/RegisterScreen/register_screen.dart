@@ -14,6 +14,7 @@ import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_button.dart';
 import 'package:salute_medical/views/custom_widgets/custom_form_field.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
+import 'package:salute_medical/views/screens/documents_screen/documents_screen.dart';
 import 'package:salute_medical/views/screens/login_screen/login_screen.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 import 'package:salute_medical/views/widgets/register_widget/mail_section_register.dart';
@@ -279,7 +280,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     listener: (context, state) {
                       if (state is VerificationSuccessStates) {
                         NavigationUsage.navigateTo(
-                            context, const LoginScreen());
+                          context,
+                          const DocumentsScreen(),
+                        );
                         Fluttertoast.showToast(
                             msg: state.verifyModels!.message!,
                             gravity: ToastGravity.BOTTOM,

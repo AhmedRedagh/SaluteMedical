@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/config/theme_colors.dart';
+import 'package:salute_medical/data/models/get_profile_model/get_profile_model.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/components/components.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/screens/documents_show_screen/documents_show_screen.dart';
 import 'package:salute_medical/views/screens/edit_profile/edit_profile.dart';
 import 'package:salute_medical/views/screens/help_support_screen/help_support.dart';
+import 'package:salute_medical/views/screens/privacy_policy_screen/privacy_policy_screen.dart';
+import 'package:salute_medical/views/screens/term_condition_screen/term_condition_screen.dart';
 import 'package:salute_medical/views/screens/transaction_screen/transaction_screen.dart';
 
 class SettingProfile extends StatelessWidget {
-  const SettingProfile({Key? key}) : super(key: key);
+  final GetProfileModel? profileModels;
+  const SettingProfile({
+    Key? key,
+    this.profileModels,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +34,11 @@ class SettingProfile extends StatelessWidget {
           children: [
             ListTile(
               onTap: () {
-                NavigationUsage.navigateTo(context, const EditProfileScreen());
+                NavigationUsage.navigateTo(
+                    context,
+                    EditProfileScreen(
+                      profileModel: profileModels,
+                    ));
               },
               title: const CustomText(
                 text: 'Edit Profile ',
@@ -133,16 +144,20 @@ class SettingProfile extends StatelessWidget {
               height: 2.w,
               color: TColor.grey,
             ),
-            const ListTile(
-              title: CustomText(
+            ListTile(
+              onTap: () {
+                NavigationUsage.navigateTo(
+                    context, const TermsConditionScreen());
+              },
+              title: const CustomText(
                 text: 'Term & Conditions',
                 fontW: FontWeight.bold,
               ),
-              leading: Icon(
+              leading: const Icon(
                 Icons.wallet_giftcard_outlined,
                 color: TColor.prim,
               ),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
                 color: TColor.prim,
               ),
@@ -151,16 +166,20 @@ class SettingProfile extends StatelessWidget {
               height: 2.w,
               color: TColor.grey,
             ),
-            const ListTile(
-              title: CustomText(
-                text: 'privacy police',
+            ListTile(
+              onTap: () {
+                NavigationUsage.navigateTo(
+                    context, const PrivacyPolicyScreen());
+              },
+              title: const CustomText(
+                text: 'privacy policy',
                 fontW: FontWeight.bold,
               ),
-              leading: Icon(
+              leading: const Icon(
                 Icons.local_police_rounded,
                 color: TColor.prim,
               ),
-              trailing: Icon(
+              trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
                 color: TColor.prim,
               ),

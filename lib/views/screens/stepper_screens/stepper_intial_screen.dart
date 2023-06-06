@@ -52,11 +52,11 @@ class StepperIntialScreen extends StatelessWidget {
           circleColor: Colors.blue.shade900,
         ),
         const Sbox(h: 30),
-          Row(
+          const Row(
           children: [
             Expanded(
               child: Column(
-                children: const [
+                children: [
                   CustomText(
                     text: 'PickUp Time',
                     fontSize: 22,
@@ -74,7 +74,7 @@ class StepperIntialScreen extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                children: const [
+                children: [
                   CustomText(
                     text: 'Appointment Time',
                     fontSize: 22,

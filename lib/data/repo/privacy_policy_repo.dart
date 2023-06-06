@@ -8,9 +8,7 @@ class PrivacyPolicyRepo {
 
   Future<PrivacyPolicyModel> repo() async {
     try {
-      final request = await _dio.get(
-        url: Config.privacyPolicy,
-      );
+      final request = await _dio.get(url: Config.privacyPolicy, isAuth: true);
 
       debugPrint("request ${request.data}");
       PrivacyPolicyModel? privacyPolicyModel;

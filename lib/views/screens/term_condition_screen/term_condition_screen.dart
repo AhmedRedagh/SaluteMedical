@@ -7,57 +7,52 @@ import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
 import 'package:salute_medical/views/widgets/app_bar_widget.dart';
 
-class PrivacyPolicyScreen extends StatelessWidget {
-  final String? name;
-  const PrivacyPolicyScreen({Key? key, this.name}) : super(key: key);
+class TermsConditionScreen extends StatelessWidget {
+  const TermsConditionScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBarW(
-          name: name
-      ),
+      appBar: appBarW(name: context.watch<TermConditionCubit>().title ?? ''),
       body: SingleChildScrollView(
-          child:BlocBuilder<TermConditionCubit , TermConditionState>(builder: ( context, states) {
-            if (states is TermConditionLoadState){
-              return const Center(
-                  child: CircularProgressIndicator()
-              );
-            }else if (states is TermConditionSuccessState){
-              return   Padding(
-                padding: const  EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Sbox(
-                      h: 10,
-                    ),
-                    CustomText(
-                      text:"",
-                      fontSize: 30,
-                      fontW: FontWeight.w900,
-                    ),
-                    Sbox(
-                      h: 50,
-                    ),
-                    CustomText(
-                      text: "",
-                      maxLine: 50,
-                      fontW: FontWeight.bold,
-                      fontSize: 20,
-                      textAlign: TextAlign.start,
-                      color: TColor.grey,
-                    )
-                  ],
-                ),
-              );
-            }else if (states is TermConditionErrorState){
-              return const SizedBox();
-            }else {
-              return const SizedBox();
-            }
-          },)
-
-      ),
+          child: BlocBuilder<TermConditionCubit, TermConditionState>(
+        builder: (context, states) {
+          if (states is TermConditionLoadState) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (states is TermConditionSuccessState) {
+            return Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Sbox(
+                    h: 10,
+                  ),
+                  CustomText(
+                    text: states.model!.data!.name,
+                    fontSize: 30,
+                    fontW: FontWeight.w900,
+                  ),
+                  const Sbox(
+                    h: 50,
+                  ),
+                  CustomText(
+                    text: states.model!.data!.description,
+                    maxLine: 50,
+                    fontW: FontWeight.bold,
+                    fontSize: 20,
+                    textAlign: TextAlign.start,
+                    color: TColor.grey,
+                  )
+                ],
+              ),
+            );
+          } else if (states is TermConditionErrorState) {
+            return const SizedBox();
+          } else {
+            return const SizedBox();
+          }
+        },
+      )),
     );
   }
 }

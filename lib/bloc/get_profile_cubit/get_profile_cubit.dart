@@ -13,7 +13,7 @@ class GetProfileCubit extends Cubit<GetProfileStates> {
     debugPrint('=========================5225252 ${response.message} ');
 
     if (response.message != "Unauthenticated") {
-      emit(GetProfileSuccessState());
+      emit(GetProfileSuccessState(model: response));
     } else {
       debugPrint(response.toString());
       emit(GetProfileErrorState(error: response.message));

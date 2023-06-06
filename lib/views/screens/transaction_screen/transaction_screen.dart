@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:salute_medical/config/theme_colors.dart';
 import 'package:salute_medical/utils/sized_box.dart';
 import 'package:salute_medical/views/custom_widgets/custom_text.dart';
-import 'package:salute_medical/views/widgets/profile_widget/edit_profile.dart';
 import 'package:salute_medical/views/widgets/transaction_widget/lis_transaction.dart';
 
 class TransactionScreen extends StatelessWidget {
@@ -19,7 +18,6 @@ class TransactionScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const EditProfile(radius: 30),
                   const CustomText(
                     text: 'Your Balance : 150 usd',
                     fontW: FontWeight.bold,
