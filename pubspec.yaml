@@ -75,9 +75,9 @@ dependencies:
   # equatable
   equatable: ^2.0.5
   # json_serializable
-  json_serializable: ^6.7.0
+  json_serializable: ^6.6.2
   #  build_runner
-  build_runner: ^2.4.4
+  build_runner: ^2.3.3
   fl_country_code_picker: ^0.0.4
   provider: ^6.0.5
   email_validator: ^2.1.17
