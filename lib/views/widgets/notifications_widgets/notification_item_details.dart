@@ -11,9 +11,9 @@ class NotifyItemDetails extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-         const Row(
+          Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             CustomText(
               text: 'Special For You, Refiki',
               color: Colors.black,

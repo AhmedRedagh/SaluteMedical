@@ -23,11 +23,11 @@ class PrivacyPolicyScreen extends StatelessWidget {
                   child: CircularProgressIndicator()
               );
             }else if (states is TermConditionSuccessState){
-              return const  Padding(
-                padding: EdgeInsets.all(20.0),
+              return   Padding(
+                padding: const  EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Sbox(
                       h: 10,
                     ),
